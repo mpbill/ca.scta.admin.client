@@ -8,6 +8,21 @@ import LoginForm from '../containers/AuthContainer';
 
 import {connect} from 'react-redux';
 
+class TopNavBar extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  render(){
+    return (
+      <nav className="nav">
+        <div className="nav-left">
+          <Link to="/addresses" className="nav-item is-tab" activeClassName="is-active">Addresses</Link>
+          <Link to="/meetings" className="nav-item is-tab" activeClassName="is-active">Meetings</Link>
+        </div>
+      </nav>
+    )
+  }
+}
 
 class App extends React.Component {
   constructor(props){
@@ -20,7 +35,7 @@ class App extends React.Component {
       this.props.getCurrentUser();
   }
   render() {
-    let toRender=this.props.children;
+    let toRender=<div><TopNavBar/>{this.props.children}</div>
     if(!this.props.loginForm.isLoggedIn){
       toRender=<LoginForm/>;
     }

@@ -35,6 +35,10 @@ class EditAddressForm extends Component{
     return (
       <div className="column is-12">
         <TextInputComponent
+          id="name"
+          value={this.props.newAddress.address.name}
+          updateProp={this.props.updateProp}>Name</TextInputComponent>
+        <TextInputComponent
           id="street1"
           value={this.props.newAddress.address.street1}
           updateProp={this.props.updateProp}>Street 1</TextInputComponent>
