@@ -12,3 +12,8 @@ export function changeSelected(selectedId) {
     selectedId:selectedId
   }
 }
+export function setIsFresh() {
+  return {
+    type:types.MEETING_TYPE_SELECT_BOX_SET_IS_FRESH
+  }
+}

@@ -1,4 +1,8 @@
 @import "~bulma";
-.monospace-font{
+.monospace-font span,button{
   font-family: monospace;
 }
+.padding-10{
+  padding: 10px;
+}
+

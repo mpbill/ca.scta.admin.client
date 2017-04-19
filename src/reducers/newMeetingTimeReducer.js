@@ -1,5 +1,3 @@
-
-
 import * as types from '../constants/actionTypes';
 import {dayOfWeek,meridiem} from '../constants/enums';
 let getDefaultState=function () {
