@@ -29,7 +29,14 @@ class AddressListTable extends Component{
       <td>{address.name}</td>
       <td>{address.street1}</td>
       <td>{address.city}</td>
-      <td><button className="button is-danger" onClick={boundClick}>Delete</button></td>
+      <td>
+        <button
+          className="button is-danger"
+          onClick={boundClick}>
+          <span className="fa fa-trash" />
+        </button>
+        <button className="button is-success"><span className="fa fa-pencil" /></button>
+      </td>
     </tr>
     )
   }
@@ -37,7 +44,7 @@ class AddressListTable extends Component{
     let rows=[];
     if(this.props.allAddresses.isLoaded){
       rows = Object.keys(this.props.allAddresses.addresses).map(this.addressRowMapper);
-    }
+  }
     rows.push(<tr key="addNewKey"><td /><td /><td /><td /><td><Link to="/addresses/new" className="button is-primary">New</Link></td></tr>)
     return (
       <div>

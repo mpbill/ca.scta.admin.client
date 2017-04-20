@@ -19,9 +19,9 @@ class NewMeetingForm extends Component{
     });
     let boundDeleteFunc = this.props.newMeetingActions.removeMeetingTimeFromNewMeeting.bind(this,i);
     return (
-      <li key={i}>
-        <div className="tile is-ancestor box">
-          <div className="tile is-vertical padding-10 is-5">
+      <div key={i}>
+        <div className="tile box">
+          <div className="tile is-vertical padding-10 is-4">
             <span className="tile is-parent is-paddingless">
               <span className="tile is-child">
                 <span className="button is-outlined is-disabled">{dayOfWeekEnumToString(mt.dayOfWeek)}</span>
@@ -42,7 +42,7 @@ class NewMeetingForm extends Component{
           </div>
 
         </div>
-      </li>
+      </div>
     )
   }
   meetingTypeMapper(key,i){
@@ -59,9 +59,9 @@ class NewMeetingForm extends Component{
             <input className="input" type="text" value={this.props.newMeetingForm.newMeeting.name} onInput={this.nameInput} />
 
           </div>
-          <ol>
+          <div className="tile is-ancestor is-vertical">
             {this.props.newMeetingForm.newMeeting.meetingTimes.map(this.meetingTimeMapper)}
-          </ol>
+          </div>
           <NewMeetingTimeForm
             newMeetingTime={this.props.newMeetingTimeForm}
             cycleDay={this.props.newMeetingTimeActions.cycleDay}

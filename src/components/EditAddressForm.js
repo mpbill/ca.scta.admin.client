@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import React,{Component} from 'react';
 import TextInputComponent from './TextInputComponent';
 import PropTypes from 'prop-types';
 class EditAddressForm extends Component{
