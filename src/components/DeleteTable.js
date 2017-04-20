@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+import {Link} from 'react-router';
 class DeleteTable extends Component{
   constructor(props){
     super(props);
@@ -25,7 +25,10 @@ class DeleteTable extends Component{
     return <thead><tr>{rows}</tr></thead>
   }
   deleteFunc(id){
-    this.props.deleteFunction(id);
+    if(this.props.deleteFunction)
+      this.props.deleteFunction(id);
+    else
+      console.warn("no delete function bound");
   }
   valueRowMapper(vObj,i){
     let valueCellMapper=function (confObj,j) {
@@ -35,10 +38,20 @@ class DeleteTable extends Component{
     let indexKey = i+"_index";
     let indexCell=[<td key={indexKey}>{i+1}</td>];
     let customCells = this.props.columnConfigs.map(valueCellMapper);
-    let boundDelete = this.deleteFunc.bind(this,vObj._id);
-    let deleteKey = i+"_delete";
-    let deleteCell=[<td key={deleteKey}><button className="button is-danger" onClick={boundDelete}><span className="fa fa-minus"/></button></td>];
-    let allCells = indexCell.concat(customCells).concat(deleteCell);
+    let modKey=i+"_mod";
+    let modButtons=[];
+    if(this.props.deleteFunction){
+      let boundDelete = this.deleteFunc.bind(this,vObj._id);
+      let deleteKey=i+"_delete";
+      modButtons.push(<button key={deleteKey} className="button is-danger" onClick={boundDelete}><span className="fa fa-minus"/></button>)
+    }
+    if(this.props.editRootLink) {
+      let editKey = i + "_edit";
+      let editUri = this.props.editRootLink+"/"+vObj._id;
+      modButtons.push(<Link to={editUri} className="button is-primary"><span className="fa fa-pencil" /></Link>);
+    }
+    let modCells=[<td key={modKey}>{modButtons}</td> ];
+    let allCells = indexCell.concat(customCells).concat(modCells);
     let rowId=i+"_row";
     let row = <tr key={rowId}>{allCells}</tr>;
     return row;

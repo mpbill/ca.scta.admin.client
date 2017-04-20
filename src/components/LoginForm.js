@@ -6,6 +6,7 @@ class LoginForm extends Component{
     this.passwordChanged=this.passwordChanged.bind(this);
     this.usernameChanged=this.usernameChanged.bind(this);
     this.loginClicked=this.loginClicked.bind(this);
+    this.passwordFieldKeyPress=this.passwordFieldKeyPress.bind(this);
   }
   usernameChanged(e){
     this.props.updateUsername(e.target.value);
@@ -16,6 +17,11 @@ class LoginForm extends Component{
   loginClicked(){
     this.props.login(this.props.loginForm.username,this.props.loginForm.password)
   }
+  passwordFieldKeyPress(e){
+    if(e.key=='Enter'){
+      this.props.login(this.props.loginForm.username,this.props.loginForm.password)
+    }
+  }
   render(){
     return (
       <div className="column is-4 is-offset-4">
@@ -25,7 +31,7 @@ class LoginForm extends Component{
         </div>
         <label className="label">Password</label>
         <div className="control">
-          <input className="input" type="password" value={this.props.loginForm.password} onInput={this.passwordChanged} />
+          <input className="input" type="password" value={this.props.loginForm.password} onInput={this.passwordChanged} onKeyPress={} />
         </div>
         <div className="control">
           <button className="button is-primary" onClick={this.loginClicked}>Login</button>
