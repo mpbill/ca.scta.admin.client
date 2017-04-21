@@ -31,7 +31,7 @@ class LoginForm extends Component{
         </div>
         <label className="label">Password</label>
         <div className="control">
-          <input className="input" type="password" value={this.props.loginForm.password} onInput={this.passwordChanged} onKeyPress={} />
+          <input className="input" type="password" value={this.props.loginForm.password} onInput={this.passwordChanged} onKeyPress={this.passwordFieldKeyPress} />
         </div>
         <div className="control">
           <button className="button is-primary" onClick={this.loginClicked}>Login</button>
