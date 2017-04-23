@@ -42,7 +42,7 @@ let deduceNextMinute=function (m) {
   }
 };
 export default function meetingsReducer(state=getDefaultState(),action) {
-  let newState;
+  let newState,meetingTypes;
   switch(action.type){
     case types.NEW_MEETING_TIME_TOGGLE_MERIDIEM:
       newState={...state,meridiem:deduceNextMeridiem(state.meridiem)};
@@ -60,13 +60,14 @@ export default function meetingsReducer(state=getDefaultState(),action) {
       newState=getDefaultState();
       break;
     case types.ADD_MEETING_TYPE_TO_NEW_MEETING_TIME:
-      let meetingTypes={...state.meetingTypes};
+      meetingTypes={...state.meetingTypes};
       meetingTypes[action.meetingType._id]=action.meetingType;
       newState={...state,meetingTypes};
       break;
     case types.REMOVE_MEETING_TYPE_FROM_NEW_MEETING_TIME:
-      newState={...state};
-      delete newState[action._id];
+      meetingTypes={...state.meetingTypes};
+      delete meetingTypes[action._id];
+      newState={...state,meetingTypes};
       break;
     default:
       newState=state;

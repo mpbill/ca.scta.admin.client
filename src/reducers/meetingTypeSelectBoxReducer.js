@@ -29,6 +29,13 @@ export default function meetingTypeSelectBoxReducer(state=getDefaultState(),acti
       delete meetingTypes[action.selectedId];
       newState={...state,isFresh:false,meetingTypes,alreadySelected};
       break;
+    case types.UNSET_ITEM:
+      meetingTypes={...state.meetingTypes};
+      alreadySelected={...state.alreadySelected};
+      meetingTypes[action.key]=alreadySelected[action.key];
+      delete alreadySelected[action.selectedId];
+      newState={...state,isFresh:false,meetingTypes,alreadySelected};
+      break;
     case types.MEETING_TYPE_SELECT_BOX_SET_IS_FRESH:
       meetingTypes={...state.meetingTypes,...state.alreadySelected};
       alreadySelected={};

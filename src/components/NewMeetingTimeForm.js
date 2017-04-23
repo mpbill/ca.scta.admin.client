@@ -12,31 +12,49 @@ class NewMeetingTimeForm extends Component{
     this.props.addNewMeetingTimeToNewMeeting(this.props.newMeetingTime);
     this.props.setIsFresh();
   }
+  deleteType(key){
+    this.props.removeMeetingType(key);
+  }
   meetingTypeMapper(key,i){
+    let boundDeleteTypeClicked = this.deleteType.bind(this,key);
+
     let t=this.props.newMeetingTime.meetingTypes[key];
-    return <span className="button is-outlined is-primary" key={key}>{t.abbreviation}</span>
+    return <button onClick={boundDeleteTypeClicked}  className="button is-outlined is-primary" key={key}>{t.abbreviation}</button>
   }
   render(){
-    let typesMapped = Object.keys(this.props.newMeetingTime.meetingTypes).map(this.meetingTypeMapper);
+    let meetingTypeKeysArray=Object.keys(this.props.newMeetingTime.meetingTypes);
+    let typesMapped = meetingTypeKeysArray.map(this.meetingTypeMapper);
     return (
-      <div>
-        <h3>New Meeting Time</h3>
-        <div className="monospace-font">
-          <button className="button is-outlined" onClick={this.props.cycleDay}>{dayOfWeekEnumToString(this.props.newMeetingTime.dayOfWeek)}</button>
-          <button className="button is-outlined" onClick={this.props.cycleHour}>{zeroPad(this.props.newMeetingTime.hour)}</button>
-          <span className="is-outlined button">:</span>
-          <button className="button is-outlined" onClick={this.props.cycleMinute}>{zeroPad(this.props.newMeetingTime.minute)}</button>
-          <button className="button is-outlined" onClick={this.props.toggleMeridiem}>{this.props.newMeetingTime.meridiem}</button>
-          {typesMapped}
+      <div className="columns is-gapless">
+        <div className="column is-12">
+          <h3>New Meeting Time</h3>
+        </div>
+        <div className="column is-12">
+          <span className="monospace-font">
+            <button className="button is-outlined" onClick={this.props.cycleDay}>{dayOfWeekEnumToString(this.props.newMeetingTime.dayOfWeek)}</button>
+            <button className="button is-outlined" onClick={this.props.cycleHour}>{zeroPad(this.props.newMeetingTime.hour)}</button>
+            <span className="is-outlined button">:</span>
+            <button className="button is-outlined" onClick={this.props.cycleMinute}>{zeroPad(this.props.newMeetingTime.minute)}</button>
+            <button className="button is-outlined" onClick={this.props.toggleMeridiem}>{this.props.newMeetingTime.meridiem}</button>
+
+          </span>
+          <button className="button is-primary" onClick={this.addClicked}><span className="fa fa-plus" /></button>
+
+        </div>
+        <div className="column is-12">
+          <span className="meeting-type-container">
+          {typesMapped.length==0?<span className="empty-line button" />:typesMapped}
+          </span>
+        </div>
+        <div className="column is-12">
           <MeetingTypeDropdown
             meetingTypeSelectBox={this.props.meetingTypeSelectBox}
             getMeetingTypes={this.props.getMeetingTypes}
             changeSelected={this.props.changeSelected}
             addMeetingTypeToMeetingTime={this.props.addMeetingTypeToMeetingTime}
           />
-          <br/>
+
         </div>
-        <button className="button is-primary" onClick={this.addClicked}><span className="fa fa-plus"></span></button>
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import * as types from '../constants/actionTypes';
+import {unsetItem} from './meetingTypeSelectBoxActions';
 export function toggleMeridiem() {
   return {
     type:types.NEW_MEETING_TIME_TOGGLE_MERIDIEM
@@ -33,8 +34,11 @@ export function addMeetingTypeToMeetingTime(meetingType) {
   }
 }
 export function removeMeetingType(_id) {
-  return {
-    type:types.REMOVE_MEETING_TYPE_FROM_NEW_MEETING_TIME,
-    _id:_id
+  return function (dispatch) {
+    dispatch({
+      type:types.REMOVE_MEETING_TYPE_FROM_NEW_MEETING_TIME,
+      _id:_id
+    });
+    dispatch(unsetItem(_id));
   }
 }

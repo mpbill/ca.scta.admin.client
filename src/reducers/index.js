@@ -18,7 +18,6 @@ const rootReducer = combineReducers({
   newMeetingForm,
   newMeetingTimeForm,
   meetingTypeSelectBox,
-  genericGetAllData,
   routing: routerReducer,
 
 

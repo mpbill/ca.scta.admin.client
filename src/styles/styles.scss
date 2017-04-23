@@ -5,4 +5,11 @@
 .padding-10{
   padding: 10px;
 }
-
+.meeting-type-container span{
+  width: 64px;
+}
+.empty-line:before{
+  content:"\200b";
+  visibility: hidden;
+  border-style: hidden;
+}
