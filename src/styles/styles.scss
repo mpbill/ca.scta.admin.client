@@ -1,4 +1,6 @@
 @import "~bulma";
+$scta-half:30;
+$scta-full:$scta-half*2;
 .monospace-font span,button{
   font-family: monospace;
 }
@@ -8,8 +10,63 @@
 .meeting-type-container span{
   width: 64px;
 }
-.empty-line:before{
+.empty-line{
   content:"\200b";
   visibility: hidden;
-  border-style: hidden;
+  border: 0 hidden;
+}
+
+.f-cont{
+  display: flex;
+
+}
+.f-cont-in{
+  display: inline-flex;
+}
+
+.scta-meeting-time-list-item-time-and-types{
+  display: flex;
+  flex-wrap: wrap;
+  width: $scta-full*5px;
+
+}
+.scta-meeting-time-list-item{
+  display: flex;
+  flex: 1;
+
+}
+.scta-meeting-time-list-item-time-and-types> div:first-child{
+  flex:0 1 100%;
+
+}
+.scta-meeting-type-flex-container{
+  display: flex;
+  flex-wrap: wrap;
+  width: $scta-full*5px;
+
+}
+.scta-full{
+  width: $scta-full*1px;
+}
+.scta-half{
+  width: $scta-half*1px;
+}
+.scta-fill{
+  flex-grow: 1;
+}
+.scta-meeting-type-flex-container > span{
+  width: $scta-full*1px;
+}
+.scta-meeting-time-list-item-delete{
+  flex: 1;
+}
+.scta-meeting-time-list-item-delete > button{
+  height: 100%;
+}
+.scta-meeting-time-control{
+  display: flex;
+}
+.scta-meeting-time-list-item-container{
+  display: flex;
+  flex-direction: row;
 }

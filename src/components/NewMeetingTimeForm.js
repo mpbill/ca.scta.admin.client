@@ -25,11 +25,11 @@ class NewMeetingTimeForm extends Component{
     let meetingTypeKeysArray=Object.keys(this.props.newMeetingTime.meetingTypes);
     let typesMapped = meetingTypeKeysArray.map(this.meetingTypeMapper);
     return (
-      <div className="columns is-gapless">
-        <div className="column is-12">
+      <div>
+        <div>
           <h3>New Meeting Time</h3>
         </div>
-        <div className="column is-12">
+        <div>
           <span className="monospace-font">
             <button className="button is-outlined" onClick={this.props.cycleDay}>{dayOfWeekEnumToString(this.props.newMeetingTime.dayOfWeek)}</button>
             <button className="button is-outlined" onClick={this.props.cycleHour}>{zeroPad(this.props.newMeetingTime.hour)}</button>
@@ -41,12 +41,12 @@ class NewMeetingTimeForm extends Component{
           <button className="button is-primary" onClick={this.addClicked}><span className="fa fa-plus" /></button>
 
         </div>
-        <div className="column is-12">
+        <div>
           <span className="meeting-type-container">
           {typesMapped.length==0?<span className="empty-line button" />:typesMapped}
           </span>
         </div>
-        <div className="column is-12">
+        <div>
           <MeetingTypeDropdown
             meetingTypeSelectBox={this.props.meetingTypeSelectBox}
             getMeetingTypes={this.props.getMeetingTypes}
