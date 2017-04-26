@@ -19,23 +19,24 @@ class NewMeetingForm extends Component{
     });
     let boundDeleteFunc = this.props.newMeetingActions.removeMeetingTimeFromNewMeeting.bind(this,i);
     return (
-      <div key={i} className="scta-meeting-time-list-item">
-        <div className="scta-meeting-time-list-item-time-and-types">
-        <div className="scta-meeting-time-control">
-            <span className="button is-outlined is-disabled scta-full">{dayOfWeekEnumToString(mt.dayOfWeek)}</span>
-            <span className="button is-outlined is-disabled scta-full">{zeroPad(mt.hour)}</span>
-            <span className="is-outlined button is-disabled scta-half">:</span>
-            <span className="button is-outlined is-disabled scta-full">{zeroPad(mt.minute)}</span>
-            <span className="button is-outlined is-disabled scta-fill">{mt.meridiem}</span>
+      <div key={i} className="scta-meeting-time-card scta-card">
+        <div className="scta-meeting-time-card-body">
+          <div className="scta-meeting-time-datetime">
+            <span className="scta-button-flag-full">{dayOfWeekEnumToString(mt.dayOfWeek)}</span>
+            <span className="scta-button-flag-full">{zeroPad(mt.hour)}</span>
+            <span className="scta-colon-button-flag">:</span>
+            <span className="scta-button-flag-full">{zeroPad(mt.minute)}</span>
+            <span className="scta-button-flag-full">{mt.meridiem}</span>
+          </div>
+          <div className="scta-meeting-time-card-types">
+            {types.length==0?<span className="button is-outlined is-disabled">NONE</span>:types}
+          </div>
         </div>
-        <div className="scta-meeting-type-flex-container">
-          {types.length==0?<span className="button is-outlined is-disabled">NONE</span>:types}
+        <div className="scta-meeting-time-card-delete">
+          <button className="button is-large is-danger" onClick={boundDeleteFunc}>
+            <span className="icon is-large"><span className="fa fa-remove fa-3x"/></span>
+          </button>
         </div>
-        </div>
-        <div className="scta-meeting-time-list-item-delete">
-          <button className="button is-outlined is-danger" onClick={boundDeleteFunc}><span className="fa fa-remove"/></button>
-        </div>
-
       </div>
     )
   }
@@ -53,10 +54,10 @@ class NewMeetingForm extends Component{
               <div className="control">
                 <input className="input" type="text" value={this.props.newMeetingForm.newMeeting.name} onInput={this.nameInput} />
               </div>
-              <div>
+              <div className="scta-meeting-time-card-container">
                 {this.props.newMeetingForm.newMeeting.meetingTimes.map(this.meetingTimeMapper)}
               </div>
-              <div className="scta-meeting-time-list-item-container">
+              <div className="scta-meeting-time-card-container">
                 <NewMeetingTimeForm
                   newMeetingTime={this.props.newMeetingTimeForm}
                   cycleDay={this.props.newMeetingTimeActions.cycleDay}
