@@ -47,18 +47,18 @@ class NewMeetingForm extends Component{
     return (
       <div>
         <div>
-          <div className="columns">
-            <div className="column is-12">
+          <div>
+            <div>
               <label className="label">Name</label>
               <div className="control">
                 <input className="input" type="text" value={this.props.newMeetingForm.newMeeting.name} onInput={this.nameInput} />
 
               </div>
             </div>
-            <div className="column is-12">
+            <div>
               {this.props.newMeetingForm.newMeeting.meetingTimes.map(this.meetingTimeMapper)}
             </div>
-            <div className="column is-12">
+            <div>
               <NewMeetingTimeForm
                 newMeetingTime={this.props.newMeetingTimeForm}
                 cycleDay={this.props.newMeetingTimeActions.cycleDay}

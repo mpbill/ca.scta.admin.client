@@ -25,12 +25,15 @@ class NewMeetingTimeForm extends Component{
     let meetingTypeKeysArray=Object.keys(this.props.newMeetingTime.meetingTypes);
     let typesMapped = meetingTypeKeysArray.map(this.meetingTypeMapper);
     return (
-      <div className="columns is-gapless">
-        <div className="column is-12">
-          <h3>New Meeting Time</h3>
-        </div>
-        <div className="column is-12">
-          <span className="monospace-font">
+    <div className="panel">
+      <p className="panel-heading">
+        New Meeting Time
+      </p>
+
+      <div className="panel-block">
+        <div className="columns">
+          <div className="column is-narrow">
+            <span className="monospace-font">
             <button className="button is-outlined" onClick={this.props.cycleDay}>{dayOfWeekEnumToString(this.props.newMeetingTime.dayOfWeek)}</button>
             <button className="button is-outlined" onClick={this.props.cycleHour}>{zeroPad(this.props.newMeetingTime.hour)}</button>
             <span className="is-outlined button">:</span>
@@ -38,24 +41,27 @@ class NewMeetingTimeForm extends Component{
             <button className="button is-outlined" onClick={this.props.toggleMeridiem}>{this.props.newMeetingTime.meridiem}</button>
 
           </span>
-          <button className="button is-primary" onClick={this.addClicked}><span className="fa fa-plus" /></button>
-
-        </div>
-        <div className="column is-12">
-          <span className="meeting-type-container">
-          {typesMapped.length==0?<span className="empty-line button" />:typesMapped}
-          </span>
-        </div>
-        <div className="column is-12">
-          <MeetingTypeDropdown
-            meetingTypeSelectBox={this.props.meetingTypeSelectBox}
-            getMeetingTypes={this.props.getMeetingTypes}
-            changeSelected={this.props.changeSelected}
-            addMeetingTypeToMeetingTime={this.props.addMeetingTypeToMeetingTime}
-          />
-
+          </div>
+          <div className="column">
+            <MeetingTypeDropdown
+              meetingTypeSelectBox={this.props.meetingTypeSelectBox}
+              getMeetingTypes={this.props.getMeetingTypes}
+              changeSelected={this.props.changeSelected}
+              addMeetingTypeToMeetingTime={this.props.addMeetingTypeToMeetingTime}
+            />
+          </div>
         </div>
       </div>
+      <div className="panel-block">
+          <span className="meeting-type-container">
+          {typesMapped.length==-1?<span className="empty-line button" />:typesMapped}
+          </span>
+      </div>
+      <div className="panel-block">
+        <button className="button is-primary" onClick={this.addClicked}><span className="fa fa-plus" /></button>
+      </div>
+    </div>
+
     )
   }
 }

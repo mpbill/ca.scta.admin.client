@@ -27,7 +27,7 @@ class MeetingTypeDropdown extends Component{
   render(){
     let options = Object.keys(this.props.meetingTypeSelectBox.meetingTypes).map(this.optionsMapper);
     return(
-      <span className="select">
+      <span className="select is-fullwidth">
         <select onInput={this.onSelectInput}>
           <option value={this.defaultValue} key={this.defaultValue}>Select...</option>
           {options}
