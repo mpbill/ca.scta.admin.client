@@ -1,0 +1,6 @@
+@import "../../node_modules/bulma/sass/utilities/all";
+$scta-half:30px;
+$scta-full:$scta-half*2;
+$red:lighten($red,.5);
+$danger:$red;
+@import "~bulma";
