@@ -3,6 +3,7 @@ import * as newMeetingTimeActions from '../actions/newMeetingTimeActions';
 import * as newMeetingActions from '../actions/newMeetingActions';
 import * as meetingTypeActions from '../actions/meetingTypeActions';
 import * as meetingTypeSelectBoxActions from '../actions/meetingTypeSelectBoxActions';
+import * as allAddressActions from '../actions/allAddressesActions';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import NewMeetingForm from '../components/NewMeetingForm';
@@ -19,6 +20,8 @@ const NewMeetingPage=(props)=>{
       meetingTypeActions={props.meetingTypeActions}
       meetingTypeSelectBoxActions={props.meetingTypeSelectBoxActions}
       meetingTypeSelectBox={props.meetingTypeSelectBox}
+      getAllAddresses={props.allAddressActions.getAllAddresses}
+      allAddresses={props.allAddresses}
 
     />
   )
@@ -28,7 +31,8 @@ function mapStateToProps(state) {
     newMeetingForm:state.newMeetingForm,
     newMeetingTimeForm:state.newMeetingTimeForm,
     meetingTypes:state.meetingTypes,
-    meetingTypeSelectBox:state.meetingTypeSelectBox
+    meetingTypeSelectBox:state.meetingTypeSelectBox,
+    allAddresses:state.allAddresses
   }
 }
 function mapDispatchToProps(dispatch) {
@@ -36,7 +40,8 @@ function mapDispatchToProps(dispatch) {
     newMeetingTimeActions:bindActionCreators(newMeetingTimeActions,dispatch),
     newMeetingActions:bindActionCreators(newMeetingActions,dispatch),
     meetingTypeActions:bindActionCreators(meetingTypeActions,dispatch),
-    meetingTypeSelectBoxActions:bindActionCreators(meetingTypeSelectBoxActions,dispatch)
+    meetingTypeSelectBoxActions:bindActionCreators(meetingTypeSelectBoxActions,dispatch),
+    allAddressActions:bindActionCreators(allAddressActions,dispatch)
   }
 }
 export default connect(

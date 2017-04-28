@@ -1,6 +1,6 @@
-.scta-meeting-type-dropdown{
+span.scta-meeting-type-dropdown{
   display: flex;
 }
-.scta-meeting-type-dropdown > select {
+span.scta-meeting-type-dropdown > select.scta-meeting-type-dropdown-select {
   flex: 0 1 100%;
 }

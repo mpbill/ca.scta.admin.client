@@ -8,6 +8,12 @@ class NewMeetingForm extends Component{
     this.nameInput=this.nameInput.bind(this);
     this.meetingTimeMapper=this.meetingTimeMapper.bind(this);
     this.meetingTypeMapper=this.meetingTypeMapper.bind(this);
+    this.optionsMapper=this.optionsMapper.bind(this);
+  }
+  componentWillMount(){
+    if(this.props.allAddresses.isLoading===false && this.props.allAddresses.isLoaded==false){
+      this.props.getAllAddresses();
+    }
   }
   nameInput(e){
     this.props.newMeetingActions.updateNewMeetingName(e.target.value);
@@ -45,18 +51,34 @@ class NewMeetingForm extends Component{
     let meetingType=meetingTime.meetingTypes[key];
     return <span key={key} className="button is-outlined is-disabled">{meetingType.abbreviation}</span>
   }
+  optionsMapper(k){
+    let address = this.props.allAddresses.addresses[k];
+    return <option key={k}>{address.street1}</option>
+  }
   render(){
+    let options = Object.keys(this.props.allAddresses.addresses).map(this.optionsMapper);
+    options.unshift(<option key={0}>Select...</option>);
     return (
       <div>
         <div>
           <div>
-            <label className="label">Name</label>
+
+            <div className="name-address-controls">
+              <button className="button is-success save-meeting-button">Save</button>
+              <label className="label">Name</label>
+                <div className="control">
+                  <input className="input" type="text" value={this.props.newMeetingForm.newMeeting.name} onInput={this.nameInput} />
+                </div>
+              <label className="label">Address</label>
               <div className="control">
-                <input className="input" type="text" value={this.props.newMeetingForm.newMeeting.name} onInput={this.nameInput} />
+                <div className="select address-select">
+                  <select>
+                    {options}
+                  </select>
+                </div>
               </div>
-              <div className="scta-meeting-time-card-container">
-                {this.props.newMeetingForm.newMeeting.meetingTimes.map(this.meetingTimeMapper)}
-              </div>
+              <label className="label">Meeting Types</label>
+            </div>
               <div className="scta-meeting-time-card-container">
                 <NewMeetingTimeForm
                   newMeetingTime={this.props.newMeetingTimeForm}
@@ -73,7 +95,8 @@ class NewMeetingForm extends Component{
                   setIsFresh={this.props.meetingTypeSelectBoxActions.setIsFresh}
                   removeMeetingType={this.props.newMeetingTimeActions.removeMeetingType}
                 />
-            </div>
+                {this.props.newMeetingForm.newMeeting.meetingTimes.map(this.meetingTimeMapper)}
+              </div>
           </div>
         </div>
       </div>

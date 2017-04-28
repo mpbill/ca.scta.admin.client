@@ -7,6 +7,7 @@ class NewMeetingTimeForm extends Component{
     super(props);
     this.addClicked=this.addClicked.bind(this);
     this.meetingTypeMapper=this.meetingTypeMapper.bind(this);
+
   }
   addClicked(){
     this.props.addNewMeetingTimeToNewMeeting(this.props.newMeetingTime);
@@ -21,6 +22,7 @@ class NewMeetingTimeForm extends Component{
     let t=this.props.newMeetingTime.meetingTypes[key];
     return <button onClick={boundDeleteTypeClicked}  className="button is-outlined is-primary" key={key}>{t.abbreviation}</button>
   }
+
   render(){
     let meetingTypeKeysArray=Object.keys(this.props.newMeetingTime.meetingTypes);
     let typesMapped = meetingTypeKeysArray.map(this.meetingTypeMapper);
@@ -41,11 +43,11 @@ class NewMeetingTimeForm extends Component{
           addMeetingTypeToMeetingTime={this.props.addMeetingTypeToMeetingTime}
         />
         <div className="scta-meeting-time-card-types">
-          {typesMapped.length==0?<span className="button is-outlined is-disabled">NONE</span>:typesMapped}
+          {typesMapped.length==0?<span className="button is-outlined is-primary">NONE</span>:typesMapped}
         </div>
       </div>
       <div className="scta-meeting-time-card-delete">
-        <button className="button is-large is-success" onClick={this.props.addClicked}>
+        <button className="button is-large is-success" onClick={this.addClicked}>
           <span className="icon is-large"><span className="fa fa-plus fa-3x"/></span>
         </button>
       </div>
