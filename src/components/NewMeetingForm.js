@@ -8,6 +8,12 @@ class NewMeetingForm extends Component{
     this.nameInput=this.nameInput.bind(this);
     this.meetingTimeMapper=this.meetingTimeMapper.bind(this);
     this.meetingTypeMapper=this.meetingTypeMapper.bind(this);
+    this.optionsMapper=this.optionsMapper.bind(this);
+  }
+  componentWillMount(){
+    if(this.props.allAddresses.isLoading===false && this.props.allAddresses.isLoaded==false){
+      this.props.getAllAddresses();
+    }
   }
   nameInput(e){
     this.props.newMeetingActions.updateNewMeetingName(e.target.value);
@@ -19,22 +25,24 @@ class NewMeetingForm extends Component{
     });
     let boundDeleteFunc = this.props.newMeetingActions.removeMeetingTimeFromNewMeeting.bind(this,i);
     return (
-      <div key={i} className="columns level">
-          <div className="column is-narrow">
-            <span className="button is-outlined is-disabled">{dayOfWeekEnumToString(mt.dayOfWeek)}</span>
-            <span className="button is-outlined is-disabled">{zeroPad(mt.hour)}</span>
-            <span className="is-outlined button is-disabled">:</span>
-            <span className="button is-outlined is-disabled">{zeroPad(mt.minute)}</span>
-            <span className="button is-outlined is-disabled">{mt.meridiem}</span>
-            <span className="tile is-parent is-vertical is-paddingless">
-              <span className="tile is-child">
-                {types}
-              </span>
-            </span>
+      <div key={i} className="scta-meeting-time-card scta-card">
+        <div className="scta-meeting-time-card-body">
+          <div className="scta-meeting-time-datetime">
+            <span className="scta-button-flag-full">{dayOfWeekEnumToString(mt.dayOfWeek)}</span>
+            <span className="scta-button-flag-full">{zeroPad(mt.hour)}</span>
+            <span className="scta-colon-button-flag">:</span>
+            <span className="scta-button-flag-full">{zeroPad(mt.minute)}</span>
+            <span className="scta-button-flag-full">{mt.meridiem}</span>
           </div>
-          <div className="column">
-            <button className="button is-outlined is-danger" onClick={boundDeleteFunc}><span className="fa fa-remove"/></button>
+          <div className="scta-meeting-time-card-types">
+            {types.length==0?<span className="button is-outlined is-disabled">NONE</span>:types}
           </div>
+        </div>
+        <div className="scta-meeting-time-card-delete">
+          <button className="button is-large is-danger" onClick={boundDeleteFunc}>
+            <span className="icon is-large"><span className="fa fa-remove fa-3x"/></span>
+          </button>
+        </div>
       </div>
     )
   }
@@ -43,41 +51,55 @@ class NewMeetingForm extends Component{
     let meetingType=meetingTime.meetingTypes[key];
     return <span key={key} className="button is-outlined is-disabled">{meetingType.abbreviation}</span>
   }
+  optionsMapper(k){
+    let address = this.props.allAddresses.addresses[k];
+    return <option key={k}>{address.street1}</option>
+  }
   render(){
+    let options = Object.keys(this.props.allAddresses.addresses).map(this.optionsMapper);
+    options.unshift(<option key={0}>Select...</option>);
     return (
       <div>
         <div>
-          <div className="columns">
-            <div className="column is-12">
-              <label className="label">Name</label>
-              <div className="control">
-                <input className="input" type="text" value={this.props.newMeetingForm.newMeeting.name} onInput={this.nameInput} />
+          <div>
 
+            <div className="name-address-controls">
+              <button className="button is-success save-meeting-button">Save</button>
+              <label className="label">Name</label>
+                <div className="control">
+                  <input className="input" type="text" value={this.props.newMeetingForm.newMeeting.name} onInput={this.nameInput} />
+                </div>
+              <label className="label">Address</label>
+              <div className="control">
+                <div className="select address-select">
+                  <select>
+                    {options}
+                  </select>
+                </div>
               </div>
+              <label className="label">Meeting Types</label>
             </div>
-            <div className="column is-12">
-              {this.props.newMeetingForm.newMeeting.meetingTimes.map(this.meetingTimeMapper)}
-            </div>
-            <div className="column is-12">
-              <NewMeetingTimeForm
-                newMeetingTime={this.props.newMeetingTimeForm}
-                cycleDay={this.props.newMeetingTimeActions.cycleDay}
-                cycleHour={this.props.newMeetingTimeActions.cycleHour}
-                cycleMinute={this.props.newMeetingTimeActions.cycleMinute}
-                toggleMeridiem={this.props.newMeetingTimeActions.toggleMeridiem}
-                addNewMeetingTimeToNewMeeting={this.props.newMeetingActions.addNewMeetingTimeToNewMeeting}
-                getMeetingTypes={this.props.meetingTypeActions.getMeetingTypes}
-                meetingTypes={this.props.meetingTypes}
-                addMeetingTypeToMeetingTime={this.props.newMeetingTimeActions.addMeetingTypeToMeetingTime}
-                meetingTypeSelectBox={this.props.meetingTypeSelectBox}
-                changeSelected={this.props.meetingTypeSelectBoxActions.changeSelected}
-                setIsFresh={this.props.meetingTypeSelectBoxActions.setIsFresh}
-                removeMeetingType={this.props.newMeetingTimeActions.removeMeetingType}
-              />
-          </div>
-            </div>
+              <div className="scta-meeting-time-card-container">
+                <NewMeetingTimeForm
+                  newMeetingTime={this.props.newMeetingTimeForm}
+                  cycleDay={this.props.newMeetingTimeActions.cycleDay}
+                  cycleHour={this.props.newMeetingTimeActions.cycleHour}
+                  cycleMinute={this.props.newMeetingTimeActions.cycleMinute}
+                  toggleMeridiem={this.props.newMeetingTimeActions.toggleMeridiem}
+                  addNewMeetingTimeToNewMeeting={this.props.newMeetingActions.addNewMeetingTimeToNewMeeting}
+                  getMeetingTypes={this.props.meetingTypeActions.getMeetingTypes}
+                  meetingTypes={this.props.meetingTypes}
+                  addMeetingTypeToMeetingTime={this.props.newMeetingTimeActions.addMeetingTypeToMeetingTime}
+                  meetingTypeSelectBox={this.props.meetingTypeSelectBox}
+                  changeSelected={this.props.meetingTypeSelectBoxActions.changeSelected}
+                  setIsFresh={this.props.meetingTypeSelectBoxActions.setIsFresh}
+                  removeMeetingType={this.props.newMeetingTimeActions.removeMeetingType}
+                />
+                {this.props.newMeetingForm.newMeeting.meetingTimes.map(this.meetingTimeMapper)}
+              </div>
           </div>
         </div>
+      </div>
     )
   }
 }
