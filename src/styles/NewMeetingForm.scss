@@ -15,6 +15,9 @@
   width: $scta-full*5;
 
 }
+div.name-address-controls{
+  padding-left: 10px;
+}
 .scta-meeting-time-list-item{
   display: flex;
   flex: 1;
@@ -55,6 +58,7 @@
   margin: 10px 10px 10px 10px;
   flex-direction: column;
   flex: 0 1 auto;
+  min-height: 4*$scta-height;
 }
 .scta-meeting-time-datetime{
   display: flex;
@@ -69,9 +73,10 @@
   width: 5*$scta-full;
 
 }
-.scta-meeting-time-card-types span {
+.scta-meeting-time-card-types span,button {
   width: $scta-full;
 }
+
 .scta-meeting-time-card-delete{
   display: flex;
   flex: 0 1 auto;
@@ -104,4 +109,17 @@
   padding: 0 0;
   @extend .scta-button-flag-half;
 
+}
+div.scta-meeting-time-card  span span.select scta-meeting-type-dropdown select.scta-meeting-type-dropdown-select{
+  height: $scta-height;
+}
+
+.name-address-controls{
+  margin-top: 10px;
+}
+.name-address-controls > button.save-meeting-button{
+  width: 380px;
+}
+.name-address-controls div.address-select > select{
+  width: 380px;
 }
