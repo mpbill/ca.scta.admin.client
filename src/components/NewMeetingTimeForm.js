@@ -25,10 +25,10 @@ class NewMeetingTimeForm extends Component{
     let meetingTypeKeysArray=Object.keys(this.props.newMeetingTime.meetingTypes);
     let typesMapped = meetingTypeKeysArray.map(this.meetingTypeMapper);
     return (
-    <div className="scta-meeting-time-card scta-card">
+    <div className="scta-meeting-time-card scta-card new-meeting-time">
       <div className="scta-meeting-time-card-body">
         <div className="scta-meeting-time-datetime">
-          <span className="scta-button-flag-full">{dayOfWeekEnumToString(this.props.newMeetingTime.dayOfWeek)}</span>
+          <span className="scta-button-flag-full" onClick={this.props.cycleDay}>{dayOfWeekEnumToString(this.props.newMeetingTime.dayOfWeek)}</span>
           <span className="scta-button-flag-full">{zeroPad(this.props.newMeetingTime.hour)}</span>
           <span className="scta-colon-button-flag">:</span>
           <span className="scta-button-flag-full">{zeroPad(this.props.newMeetingTime.minute)}</span>
@@ -45,7 +45,7 @@ class NewMeetingTimeForm extends Component{
         </div>
       </div>
       <div className="scta-meeting-time-card-delete">
-        <button className="button is-large is-success" onClick={this.props.addClicked}>
+        <button className="button is-large is-success" onClick={this.addClicked}>
           <span className="icon is-large"><span className="fa fa-plus fa-3x"/></span>
         </button>
       </div>

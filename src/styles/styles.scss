@@ -1,9 +1,27 @@
 
 @import "variables";
 @import "MeetingTypeDropdown";
+@import "TopNav";
 @import "NewMeetingForm";
 html{
   background-color: #e9ebee;
 }
 
+.is-primary{
+  background-color: $turquoise;
+}
+.is-success{
+  background-color: $green;
+}
+.is-danger{
+  background-color: $red;
+}
 
+body{
+  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;;
+  margin: 0;
+}
+
+button {
+  border: none;
+}

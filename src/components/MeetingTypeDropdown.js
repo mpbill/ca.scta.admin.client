@@ -28,7 +28,7 @@ class MeetingTypeDropdown extends Component{
     let options = Object.keys(this.props.meetingTypeSelectBox.meetingTypes).map(this.optionsMapper);
     return(
       <span className="select scta-meeting-type-dropdown">
-        <select onInput={this.onSelectInput}>
+        <select onInput={this.onSelectInput} className="scta-meeting-type-dropdown-select">
           <option value={this.defaultValue} key={this.defaultValue}>Select...</option>
           {options}
         </select>

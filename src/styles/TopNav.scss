@@ -1,0 +1,18 @@
+@import "variables";
+nav.nav{
+  display: flex;
+  background: $white;
+}
+nav.nav a{
+  padding: 10px 5px 5px 5px;
+  text-decoration: none;
+  color: $black-ter;
+
+
+}
+nav.nav a:hover{
+  border-bottom: 3px solid rgba($turquoise,.4) ;
+}
+nav.nav a.is-active{
+  border-bottom: 3px solid $turquoise ;
+}

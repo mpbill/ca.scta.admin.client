@@ -7,10 +7,8 @@ class TopNavBar extends React.Component{
   render(){
     return (
       <nav className="nav">
-        <div className="nav-left">
           <Link to="/addresses" className="nav-item is-tab" activeClassName="is-active">Addresses</Link>
           <Link to="/meetings" className="nav-item is-tab" activeClassName="is-active">Meetings</Link>
-        </div>
       </nav>
     )
   }
