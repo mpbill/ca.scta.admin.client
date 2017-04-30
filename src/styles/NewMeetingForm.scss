@@ -16,7 +16,7 @@
 
 }
 div.name-address-controls{
-  padding-left: 10px;
+  margin-left: 10px;
 }
 .scta-meeting-time-list-item{
   display: flex;
@@ -116,10 +116,14 @@ div.scta-meeting-time-card  span span.select scta-meeting-type-dropdown select.s
 
 .name-address-controls{
   margin-top: 10px;
+  width: 380px;
 }
 .name-address-controls > button.save-meeting-button{
-  width: 380px;
+  width: 100%;
 }
 .name-address-controls div.address-select > select{
-  width: 380px;
+  width: 100%;
+}
+.name-address-controls div.address-select{
+  width: 100%;
 }
