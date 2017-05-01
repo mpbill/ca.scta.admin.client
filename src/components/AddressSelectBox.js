@@ -14,7 +14,7 @@ class AddressSelectBox extends Component{
   }
   optionsMapper(k){
     let address = this.props.allAddresses.addresses[k];
-    return <option key={k} value={k}>{address.street1}</option>
+    return <option key={k} value={k}>{address.street1}</option>;
   }
   onSelectInput(e){
     let k = e.target.value;
@@ -38,7 +38,7 @@ class AddressSelectBox extends Component{
           </select>
         </div>
       </div>
-    )
+    );
   }
 }
 export default AddressSelectBox;

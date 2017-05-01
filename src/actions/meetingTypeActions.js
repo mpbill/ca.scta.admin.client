@@ -9,5 +9,5 @@ export function getMeetingTypes() {
       dispatch({type:types.GET_MEETING_TYPES_RETURNED,meetingTypes:data});
       dispatch(populateSelectBox(data));
     });
-  }
+  };
 }

@@ -23,7 +23,7 @@ class MeetingTypeDropdown extends Component{
   }
   optionsMapper(key){
     let t=this.props.meetingTypeSelectBox.meetingTypes[key];
-    return <option key={key} value={key}>{t.name}</option>
+    return <option key={key} value={key}>{t.name}</option>;
   }
   render(){
     let options = Object.keys(this.props.meetingTypeSelectBox.meetingTypes).map(this.optionsMapper);
@@ -34,7 +34,7 @@ class MeetingTypeDropdown extends Component{
           {options}
         </select>
       </span>
-    )
+    );
   }
 }
 export default MeetingTypeDropdown;

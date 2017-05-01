@@ -14,7 +14,7 @@
     "start": "npm-run-all --parallel test:watch open:src lint:watch",
     "open:src": "babel-node tools/srcServer.js",
     "open:dist": "babel-node tools/distServer.js",
-    "lint": "esw webpack.config.* src tools --color",
+    "lint": "esw webpack.config.* src tools --color --fix",
     "lint:watch": "npm run lint -- --watch",
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
@@ -170,7 +170,7 @@
     },
     "rules": {
       "quotes": 0,
-      "no-console": 1,
+      "no-console": 0,
       "no-debugger": 1,
       "no-var": 1,
       "semi": [

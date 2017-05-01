@@ -50,7 +50,7 @@ class EditAddressForm extends Component{
           updateProp={this.props.updateProp}>Map Link</TextInputComponent>
         <button className="button is-primary" onClick={this.saveClicked}>Save</button>
       </div>
-    )
+    );
   }
 }
 EditAddressForm.propTypes={

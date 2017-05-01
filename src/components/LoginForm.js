@@ -15,11 +15,11 @@ class LoginForm extends Component{
     this.props.updatePassword(e.target.value);
   }
   loginClicked(){
-    this.props.login(this.props.loginForm.username,this.props.loginForm.password)
+    this.props.login(this.props.loginForm.username,this.props.loginForm.password);
   }
   passwordFieldKeyPress(e){
     if(e.key=='Enter'){
-      this.props.login(this.props.loginForm.username,this.props.loginForm.password)
+      this.props.login(this.props.loginForm.username,this.props.loginForm.password);
     }
   }
   render(){
@@ -37,7 +37,7 @@ class LoginForm extends Component{
           <button className="button is-primary" onClick={this.loginClicked}>Login</button>
         </div>
       </div>
-    )
+    );
   }
 }
 export default LoginForm;

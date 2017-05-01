@@ -10,10 +10,10 @@ class DeleteTable extends Component{
     return {
       label:label,
       prop:prop
-    }
+    };
   }
   static headerFooterMapper(conf,i){
-    return <th key={i+1}>{conf.label}</th>
+    return <th key={i+1}>{conf.label}</th>;
   }
   makeHeader(){
     let rows=[<th key={0}>#</th>];
@@ -22,7 +22,7 @@ class DeleteTable extends Component{
     let nextKey = this.props.columnConfigs.length+1;
     rows.push(<th key={nextKey} />);
 
-    return <thead><tr>{rows}</tr></thead>
+    return <thead><tr>{rows}</tr></thead>;
   }
   deleteFunc(id){
     if(this.props.deleteFunction)
@@ -33,7 +33,7 @@ class DeleteTable extends Component{
   valueRowMapper(vObj,i){
     let valueCellMapper=function (confObj,j) {
       let key = i.toString()+j.toString();
-      return <td key={key}>{vObj[confObj.prop]}</td>
+      return <td key={key}>{vObj[confObj.prop]}</td>;
     };
     let indexKey = i+"_index";
     let indexCell=[<td key={indexKey}>{i+1}</td>];
@@ -43,7 +43,7 @@ class DeleteTable extends Component{
     if(this.props.deleteFunction){
       let boundDelete = this.deleteFunc.bind(this,vObj._id);
       let deleteKey=i+"_delete";
-      modButtons.push(<button key={deleteKey} className="button is-danger" onClick={boundDelete}><span className="fa fa-minus"/></button>)
+      modButtons.push(<button key={deleteKey} className="button is-danger" onClick={boundDelete}><span className="fa fa-minus"/></button>);
     }
     if(this.props.editRootLink) {
       let editKey = i + "_edit";
@@ -72,7 +72,7 @@ class DeleteTable extends Component{
           </table>
         </div>
       </div>
-    )
+    );
   }
 }
 

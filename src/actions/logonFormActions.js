@@ -21,7 +21,7 @@ export function login(username,password) {
     })
       .then(()=>{
         dispatch({type:types.LOGIN_RETURNED,isLoggedIn:true});
-      })
+      });
   };
 }
 export function unauthorizedException() {

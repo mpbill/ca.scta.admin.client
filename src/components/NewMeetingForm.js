@@ -41,12 +41,12 @@ class NewMeetingForm extends Component{
           </button>
         </div>
       </div>
-    )
+    );
   }
   meetingTypeMapper(key,i){
     let meetingTime=this.props.newMeetingForm.newMeeting.meetingTimes[i];
     let meetingType=meetingTime.meetingTypes[key];
-    return <span key={key} className="button is-outlined is-disabled">{meetingType.abbreviation}</span>
+    return <span key={key} className="button is-outlined is-disabled">{meetingType.abbreviation}</span>;
   }
   render(){
     return (
@@ -89,7 +89,7 @@ class NewMeetingForm extends Component{
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 export default NewMeetingForm;

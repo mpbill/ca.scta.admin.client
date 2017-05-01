@@ -24,7 +24,7 @@ export function clearMeetingTime() {
   return function (dispatch) {
     dispatch({
       type:types.CLEAR_NEW_MEETING_TIME
-    })
+    });
   };
 }
 export function addMeetingTypeToMeetingTime(meetingType) {

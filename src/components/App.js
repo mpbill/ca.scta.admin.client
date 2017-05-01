@@ -19,7 +19,7 @@ class App extends React.Component {
       this.props.getCurrentUser();
   }
   render() {
-    let toRender=<div className="container"><TopNavBar/>{this.props.children}</div>
+    let toRender=<div className="container"><TopNavBar/>{this.props.children}</div>;
     if(!this.props.loginForm.isLoggedIn){
       toRender=<LoginForm/>;
     }
@@ -35,22 +35,21 @@ const AppContainer=(props)=>{
     <App
       getCurrentUser={props.logonFormActions.getCurrentUser}
       loginForm={props.loginForm}
-      children={props.children}>
-    </App>
-  )
+      children={props.children} />
+  );
 };
 
 function mapStateToProps(state) {
   return {
     loginForm:state.loginForm,
     currentUser:state.currentUser
-  }
+  };
 }
 function mapDispatchToProps(dispatch) {
   return {
     logonFormActions:bindActionCreators(logonFormActions,dispatch),
     currentUserActions:bindActionCreators(currentUserActions,dispatch)
-  }
+  };
 }
 App.propTypes = {
   children: PropTypes.element
