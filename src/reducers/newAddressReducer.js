@@ -13,7 +13,7 @@ let getDefaultState=function () {
       description:"",
       mapLink:""
     },
-  }
+  };
 };
 
 export default function newAddressReducer(state=getDefaultState(),action) {

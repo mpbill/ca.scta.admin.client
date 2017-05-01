@@ -1,31 +1,39 @@
-import React, {Component} from 'react';
+import React from 'react';
 import * as actions from '../actions/newAddressActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import EditAddressForm from '../components/EditAddressForm';
+import PropTypes from 'prop-types';
 
-
-export const EditAddressContainer=(props)=>{
+export const EditAddressContainerFunc=(props)=>{
   return (
     <EditAddressForm
       updateProp={props.actions.updateProp}
       requestInsert={props.actions.requestInsert}
       newAddress={props.newAddress}
     />
-  )
+  );
+};
+EditAddressContainerFunc.propTypes={
+  updateProp:PropTypes.func,
+  requestInsert:PropTypes.func,
+  newAddress:PropTypes.object,
+  actions:PropTypes.object
 };
 function mapStateToProps(state) {
   return {
     newAddress:state.newAddress
-  }
+  };
 }
 function mapDispatchToProps(dispatch) {
   return {
     actions:bindActionCreators(actions,dispatch)
-  }
+  };
 }
 
-export default connect(
+let EditAddressContainer =connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditAddressContainer);
+)(EditAddressContainerFunc);
+
+  export default EditAddressContainer;

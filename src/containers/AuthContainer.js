@@ -1,12 +1,12 @@
 /**
  * Created by mpbil on 4/10/2017.
  */
-import React, {Component} from 'react';
+import React from 'react';
 import * as actions from '../actions/logonFormActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import LoginForm from '../components/LoginForm'
-
+import LoginForm from '../components/LoginForm';
+import PropTypes from 'prop-types';
 
 
 export const LoginPage=(props)=>{
@@ -17,17 +17,21 @@ export const LoginPage=(props)=>{
       login={props.actions.login}
       loginForm={props.loginForm}
     />
-  )
+  );
+};
+LoginPage.propTypes={
+  actions:PropTypes.object,
+  loginForm:PropTypes.object
 };
 function mapStateToProps(state) {
   return {
     loginForm:state.loginForm
-  }
+  };
 }
 function mapDispatchToProps(dispatch) {
   return {
     actions:bindActionCreators(actions,dispatch)
-  }
+  };
 }
 export default connect(
   mapStateToProps,

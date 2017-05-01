@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, IndexLink } from 'react-router';
+import { Link } from 'react-router';
 class TopNavBar extends React.Component{
   constructor(props){
     super(props);
@@ -12,7 +12,7 @@ class TopNavBar extends React.Component{
           <Link to="/meetings" className="nav-item is-tab" activeClassName="is-active">Meetings</Link>
         </div>
       </nav>
-    )
+    );
   }
 }
 export default TopNavBar;

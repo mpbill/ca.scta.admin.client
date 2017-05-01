@@ -12,7 +12,7 @@ let getDefaultState=function () {
       meetingTypes:{},
       alreadySelected:{},
     }
-  }
+  };
 };
 
 export default function meetingTypeReducer(state=getDefaultState(), action) {
@@ -34,7 +34,8 @@ export default function meetingTypeReducer(state=getDefaultState(), action) {
     case types.CHANGE_SELECTED:
       meetingTypes={...state.selectBox.meetingTypes};
       alreadySelected={...state.selectBox.alreadySelected};
-      alreadySelected[action.selectedId];
+      newState={...state,meetingTypes,alreadySelected};
+      break;
     default:
       newState=state;
   }

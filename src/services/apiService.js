@@ -17,7 +17,6 @@ function mangleConfig(config) {
 }
 
 function checkForAuthError(error) {
-  console.log(error);
   if(error && error.response && error.response.status === 401) {
     store().dispatch(unauthorizedException());
     return;

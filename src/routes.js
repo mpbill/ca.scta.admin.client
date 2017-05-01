@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute,IndexRedirect} from 'react-router';
-import EditAddressContainer from './containers/AddressContainer';
+import EditAddressContainer from './containers/EditAddressContainer';
 import AddressListPage from './containers/AddressListPage';
 import App from './components/App';
 import GenericContainer from './containers/GenericContainer';

@@ -8,7 +8,7 @@ let getDefaultState=function () {
     meetingTypes:{},
     alreadySelected:{},
 
-  }
+  };
 };
 
 export default function meetingTypeSelectBoxReducer(state=getDefaultState(),action) {
@@ -39,10 +39,10 @@ export default function meetingTypeSelectBoxReducer(state=getDefaultState(),acti
     case types.MEETING_TYPE_SELECT_BOX_SET_IS_FRESH:
       meetingTypes={...state.meetingTypes,...state.alreadySelected};
       alreadySelected={};
-      newState={...state,isFresh:true,alreadySelected:alreadySelected,meetingTypes:meetingTypes}
+      newState={...state,isFresh:true,alreadySelected:alreadySelected,meetingTypes:meetingTypes};
       break;
     default:
       newState=state;
   }
   return newState;
-};
+}

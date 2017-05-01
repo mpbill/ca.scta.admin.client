@@ -16,7 +16,7 @@ class NewMeetingTimeForm extends Component{
   deleteType(key){
     this.props.removeMeetingType(key);
   }
-  meetingTypeMapper(key,i){
+  meetingTypeMapper(key){
     let boundDeleteTypeClicked = this.deleteType.bind(this,key);
 
     let t=this.props.newMeetingTime.meetingTypes[key];

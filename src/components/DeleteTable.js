@@ -48,7 +48,7 @@ class DeleteTable extends Component{
     if(this.props.editRootLink) {
       let editKey = i + "_edit";
       let editUri = this.props.editRootLink+"/"+vObj._id;
-      modButtons.push(<Link to={editUri} className="button is-primary"><span className="fa fa-pencil" /></Link>);
+      modButtons.push(<Link key={editKey} to={editUri} className="button is-primary"><span className="fa fa-pencil" /></Link>);
     }
     let modCells=[<td key={modKey}>{modButtons}</td> ];
     let allCells = indexCell.concat(customCells).concat(modCells);

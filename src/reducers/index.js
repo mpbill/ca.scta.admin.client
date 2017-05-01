@@ -8,7 +8,7 @@ import allAddresses from './allAddressesReducer';
 import newMeetingForm from './newMeetingReducer';
 import newMeetingTimeForm from './newMeetingTimeReducer';
 import meetingTypeSelectBox from './meetingTypeSelectBoxReducer';
-import genericGetAllData from './genericGetAllNamedReducer';
+
 const rootReducer = combineReducers({
   loginForm,
   currentUser,

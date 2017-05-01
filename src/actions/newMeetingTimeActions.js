@@ -3,22 +3,22 @@ import {unsetItem} from './meetingTypeSelectBoxActions';
 export function toggleMeridiem() {
   return {
     type:types.NEW_MEETING_TIME_TOGGLE_MERIDIEM
-  }
+  };
 }
 export function cycleDay() {
   return {
     type:types.NEW_MEETING_TIME_CYCLE_DAY
-  }
+  };
 }
 export function cycleHour() {
   return {
     type:types.NEW_MEETING_TIME_CYCLE_HOUR
-  }
+  };
 }
 export function cycleMinute() {
   return {
     type:types.NEW_MEETING_TIME_CYCLE_MINUTE
-  }
+  };
 }
 export function clearMeetingTime() {
   return function (dispatch) {
@@ -31,7 +31,7 @@ export function addMeetingTypeToMeetingTime(meetingType) {
   return {
     type:types.ADD_MEETING_TYPE_TO_NEW_MEETING_TIME,
     meetingType:meetingType
-  }
+  };
 }
 export function removeMeetingType(_id) {
   return function (dispatch) {
@@ -40,5 +40,5 @@ export function removeMeetingType(_id) {
       _id:_id
     });
     dispatch(unsetItem(_id));
-  }
+  };
 }

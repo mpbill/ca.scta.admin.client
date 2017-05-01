@@ -7,7 +7,7 @@ let getDefaultState=function () {
     isLoading:false,
     isLoaded:false,
     addresses:{}
-  }
+  };
 };
 
 export default function allAddressesReducer(state=getDefaultState(),action) {
@@ -17,7 +17,7 @@ export default function allAddressesReducer(state=getDefaultState(),action) {
       newState={...state,isLoading:true,isLoaded:false};
       break;
     case types.ALL_ADDRESSES_REQUEST_ALL_RETURNED:
-      newState={...state,isLoading:false,isLoaded:true,addresses:action.addresses}
+      newState={...state,isLoading:false,isLoaded:true,addresses:action.addresses};
       break;
     case types.ALL_ADDRESSES_REQUEST_DELETE:
       newState={...state,isLoading:true,isLoaded:false};

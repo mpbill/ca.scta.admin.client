@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import * as actions from '../actions/allAddressesActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-
+import PropTypes from 'prop-types';
 
 import {Link} from 'react-router';
 class AddressListTable extends Component{
@@ -38,14 +38,14 @@ class AddressListTable extends Component{
         <button className="button is-success"><span className="fa fa-pencil" /></button>
       </td>
     </tr>
-    )
+    );
   }
   render(){
     let rows=[];
     if(this.props.allAddresses.isLoaded){
       rows = Object.keys(this.props.allAddresses.addresses).map(this.addressRowMapper);
   }
-    rows.push(<tr key="addNewKey"><td /><td /><td /><td /><td><Link to="/addresses/new" className="button is-primary">New</Link></td></tr>)
+    rows.push(<tr key="addNewKey"><td /><td /><td /><td /><td><Link to="/addresses/new" className="button is-primary">New</Link></td></tr>);
     return (
       <div>
         <table className="table">
@@ -55,7 +55,7 @@ class AddressListTable extends Component{
             <th>Name</th>
             <th>Street 1</th>
             <th>City</th>
-            <th></th>
+            <th />
           </tr>
           </thead>
           <tbody>
@@ -63,11 +63,18 @@ class AddressListTable extends Component{
           </tbody>
         </table>
       </div>
-    )
+    );
   }
 }
+AddressListTable.propTypes={
+  allAddresses:PropTypes.object,
+  getAllAddresses:PropTypes.func,
+  actions:PropTypes.object,
+  deleteAddress:PropTypes.func
 
-export const AddressListPage=(props)=>{
+};
+
+export const AddressListPageFunc=(props)=>{
   return (
     <AddressListTable
       getAllAddresses={props.actions.getAllAddresses}
@@ -75,22 +82,29 @@ export const AddressListPage=(props)=>{
       allAddresses={props.allAddresses}
       />
 
-  )
+  );
 };
+AddressListPageFunc.propTypes={
+  getAllAddresses:PropTypes.func,
+  deleteAddress:PropTypes.func,
+  allAddresses:PropTypes.object,
+  actions:PropTypes.object
+};
+
 
 
 function mapStateToProps(state) {
   return {
     allAddresses:state.allAddresses
-  }
+  };
 }
 function mapDispatchToProps(dispatch) {
   return {
     actions:bindActionCreators(actions,dispatch)
-  }
+  };
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddressListPage)
+)(AddressListPageFunc);

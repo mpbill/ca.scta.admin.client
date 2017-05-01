@@ -7,7 +7,7 @@ let getDefaultState=function () {
       minute:0,
       meridiem:meridiem.ante,
       meetingTypes:{}
-  }
+  };
 };
 let deduceNextMeridiem=function (mer) {
   switch(mer){

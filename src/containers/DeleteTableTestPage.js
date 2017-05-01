@@ -18,7 +18,7 @@ let makeTestRowObj=function (col1,col2,col3) {
     col2,
     col3,
     propNotInTable:"DERP"
-  }
+  };
 };
 let testRowObjects=[
   makeTestRowObj("a","b","c"),
@@ -28,12 +28,12 @@ let testRowObjects=[
 let fakeDeleteFunc=function (id) {
   console.log("DELETING " + id);
 };
-export default function deleteTableTestPage(props){
+export default function deleteTableTestPage(){
   return (
     <DeleteTable
       columnConfigs={headerConfObjects}
       rowObjects={testRowObjects}
       deleteFunction={fakeDeleteFunc}
     />
-  )
+  );
 }

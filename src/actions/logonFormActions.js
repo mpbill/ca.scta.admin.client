@@ -4,13 +4,13 @@ export function updatePassword(password) {
   return {
     type:types.PASSWORD_UPDATE,
     password:password
-  }
+  };
 }
 export function updateUsername(username){
   return {
     type:types.USERNAME_UPDATE,
     username:username
-  }
+  };
 }
 export function login(username,password) {
   return function (dispatch) {
@@ -19,15 +19,15 @@ export function login(username,password) {
       username:username,
       password:password
     })
-      .then(({data})=>{
+      .then(()=>{
         dispatch({type:types.LOGIN_RETURNED,isLoggedIn:true});
       })
-  }
+  };
 }
 export function unauthorizedException() {
   return {
     type:types.UNAUTHORIZED_EXCEPTION
-  }
+  };
 }
 export function getCurrentUser() {
   return function (dispatch) {
@@ -43,5 +43,5 @@ export function getCurrentUser() {
           dispatch({type:types.SET_LOGGED_OUT});
         }
       });
-  }
+  };
 }

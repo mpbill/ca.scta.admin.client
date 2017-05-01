@@ -9,7 +9,7 @@ let getInitialState=function () {
     currentUser:{
       username:""
     }
-  }
+  };
 };
 
 export default function currentUserReducer(state=getInitialState(),action) {

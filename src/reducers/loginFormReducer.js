@@ -7,7 +7,7 @@ let getDefaultState=()=>{
           username:"",
           password:"",
           currentUser:{}
-      }
+      };
 };
 
 export default function loginFormReducer(state=getDefaultState(), action) {

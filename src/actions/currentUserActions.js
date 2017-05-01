@@ -10,8 +10,9 @@ export function getCurrentUser() {
     api.get('/user')
     .then(({data})=>dispatch({type:types.GET_CURRENT_USER_RETURNED,user:data}))
     .catch(err=>{
+      console.log(err);
       dispatch({type:types.GET_CURRENT_USER_RETURNED,user:{}});
       dispatch({type:types.UNAUTHORIZED_EXCEPTION});
-    })
-  }
+    });
+  };
 }

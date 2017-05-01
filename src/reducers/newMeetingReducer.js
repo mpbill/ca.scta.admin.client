@@ -11,7 +11,7 @@ let getDefaultState=function () {
       address:{},
       meetingTimes:[],
     }
-  }
+  };
 };
 
 

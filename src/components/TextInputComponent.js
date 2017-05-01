@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+import PropTypes from 'prop-types';
 class TextInputComponent extends Component{
   constructor(props){
     super(props);
@@ -16,7 +16,13 @@ class TextInputComponent extends Component{
           <input className="input" type="text" id={this.props.id} value={this.props.value} onInput={this.inputChanged} />
         </div>
       </div>
-    )
+    );
   }
 }
+TextInputComponent.propTypes={
+  updateProp:PropTypes.func,
+  children:PropTypes.node,
+  id:PropTypes.node,
+  value:PropTypes.node
+};
 export default TextInputComponent;
