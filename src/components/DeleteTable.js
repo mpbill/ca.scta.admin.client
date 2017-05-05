@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router';
+import PropTypes from 'prop-types';
 class DeleteTable extends Component{
   constructor(props){
     super(props);
@@ -75,5 +76,8 @@ class DeleteTable extends Component{
     );
   }
 }
+DeleteTable.propTypes={
+
+};
 
 export default DeleteTable;

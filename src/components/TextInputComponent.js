@@ -6,7 +6,10 @@ class TextInputComponent extends Component{
     this.inputChanged=this.inputChanged.bind(this);
   }
   inputChanged(e){
-    this.props.updateProp(e.target.id,e.target.value);
+    if(this.props.id)
+      this.props.updateProp(e.target.id,e.target.value);
+    else
+      this.props.updateProp(e.target.value);
   }
   render(){
     return (
