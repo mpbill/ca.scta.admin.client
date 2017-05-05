@@ -10,6 +10,8 @@ let getDefaultState=function () {
       meetingGroupId:"",
       address:{},
       meetingTimes:[],
+      meetingTimeCount:0,
+
     }
   };
 };
@@ -22,7 +24,7 @@ export default function newMeetingReducer(state=getDefaultState(),action) {
   switch(action.type){
     case types.ADD_NEW_MEETING_TIME_TO_NEW_MEETING:
       meetingTimes=[...state.newMeeting.meetingTimes,action.meetingTime];
-      newMeeting={...state.newMeeting,meetingTimes};
+      newMeeting={...state.newMeeting,meetingTimes,meetingTimeCount:state.newMeeting.meetingTimeCount+1};
       newState={...state,newMeeting};
       break;
     case types.REMOVE_MEETING_TIME_FROM_NEW_MEETING_BY_INDEX:
@@ -30,7 +32,7 @@ export default function newMeetingReducer(state=getDefaultState(),action) {
         ...state.newMeeting.meetingTimes.slice(0,action.index),
         ...state.newMeeting.meetingTimes.slice(action.index+1)
       ];
-      newMeeting={...state.newMeeting,meetingTimes};
+      newMeeting={...state.newMeeting,meetingTimes,meetingTimeCount:state.newMeeting.meetingTimeCount-1};
       newState={...state,newMeeting};
       break;
     case types.SET_NEW_MEETINGS_ADDRESS:
