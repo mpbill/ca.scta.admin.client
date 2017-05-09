@@ -24,8 +24,8 @@ export function saveNewMeetingGroup(meetingGroup) {
       dispatch(push("/meetingGroups"));
 
     })
-    .error(console.log)
-  }
+    .error(console.log);
+  };
 }
 
 

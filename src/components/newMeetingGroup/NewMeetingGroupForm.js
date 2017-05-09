@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './NewMeetingGroupForm.scss';
 import TextInputComponent from '../TextInputComponent';
 import classNames from 'classnames';
-const bindHelper=(that,func)=>{func.bind(that)};
+const bindHelper=(that,func)=>{func.bind(that);};
 class NewMeetingGroupForm extends Component{
 
   constructor(props){
