@@ -77,6 +77,13 @@ class DeleteTable extends Component{
   }
 }
 DeleteTable.propTypes={
+  deleteFunction:PropTypes.func,
+  editRootLink:PropTypes.string,
+  columnConfigs:PropTypes.arrayOf(PropTypes.shape({
+    label:PropTypes.string,
+    prop:PropTypes.string
+  })).isRequired,
+  rowObjects:PropTypes.arrayOf(PropTypes.object).isRequired
 
 };
 

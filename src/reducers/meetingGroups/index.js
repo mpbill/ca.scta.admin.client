@@ -3,6 +3,6 @@ import { combineReducers } from 'redux';
 
 export default combineReducers({
   newMeetingGroupForm
-})
+});
 
 

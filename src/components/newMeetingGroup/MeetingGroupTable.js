@@ -6,6 +6,6 @@ class MeetingGroupTable extends Component{
       <div>
         <DeleteTable />
       </div>
-    )
+    );
   }
 }

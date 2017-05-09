@@ -8,7 +8,7 @@ import allAddresses from './allAddressesReducer';
 import newMeetingForm from './newMeetingReducer';
 import newMeetingTimeForm from './newMeetingTimeReducer';
 import meetingTypeSelectBox from './meetingTypeSelectBoxReducer';
-import newMeetingGroupReducers from './meetingGroups';
+import meetingGroup from './meetingGroups';
 const rootReducer = combineReducers({
   loginForm,
   currentUser,
@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
   newMeetingForm,
   newMeetingTimeForm,
   meetingTypeSelectBox,
-  newMeetingGroupReducers,
+  meetingGroup,
   routing: routerReducer,
 });
 
