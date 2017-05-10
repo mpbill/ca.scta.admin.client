@@ -3,7 +3,7 @@ import NewMeetingTimeForm from '../components/NewMeetingTimeForm';
 import dayOfWeekEnumToString from '../helpers/dayOfWeekEnumToString';
 import zeroPad from '../helpers/zeroPad';
 import AddressSelectBox from './AddressSelectBox';
-
+import MeetingGroupSelectBox from './MeetingGroupSelectBox/MeetingGroupSelectBox';
 
 class NewMeetingForm extends Component{
   constructor(props){
@@ -57,9 +57,11 @@ class NewMeetingForm extends Component{
             <div className="name-address-controls">
               <button className="button is-success save-meeting-button">Save</button>
               <label className="label">Name</label>
-                <div className="control">
-                  <input className="input" type="text" value={this.props.newMeetingForm.newMeeting.name} onInput={this.nameInput} />
-                </div>
+              <div className="control">
+                <input className="input" type="text" value={this.props.newMeetingForm.newMeeting.name} onInput={this.nameInput} />
+              </div>
+              <label className="label">Group</label>
+              <MeetingGroupSelectBox selectionChanged={(id)=>console.log(id)}/>
               <label className="label">Address</label>
               <AddressSelectBox
                 allAddresses={this.props.allAddresses}

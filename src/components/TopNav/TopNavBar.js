@@ -11,7 +11,7 @@ class TopNavBar extends React.Component{
       <nav className="nav scta-TopNavBar">
         <div className="nav-left">
           <NavLink to="/addresses">Addresses</NavLink>
-          <NavLink to="/meetings">Addresses</NavLink>
+          <NavLink to="/meetings">Meetings</NavLink>
           <NavLink to="/meetingGroups">Meeting Groups</NavLink>
         </div>
       </nav>

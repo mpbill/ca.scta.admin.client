@@ -1,6 +1,7 @@
 import * as types from '../../constants/actionTypes';
 import api from '../../services/apiService';
 import {push} from 'react-router-redux';
+import {getAllMeetingGroups} from './meetingGroupsDataActions';
 export function updateName(name) {
   return {
     type:types.NEW_MEETING_GROUP_UPDATE_NAME,
@@ -21,7 +22,7 @@ export function saveNewMeetingGroup(meetingGroup) {
     api.post('genericApi/meetingGroups',meetingGroup)
     .then(()=>{
       dispatch({type:types.NEW_MEETING_GROUP_RESET});
-      dispatch({type:types.MEETING_GROUPS_DATA_GET_ALL});
+      dispatch(getAllMeetingGroups());
       dispatch(push("/meetingGroups"));
 
 

@@ -25,3 +25,9 @@ export function updateNewMeetingName(name) {
     name:name
   };
 }
+export function setNewMeetingsGroupId(id) {
+  return {
+    type:types.SET_NEW_MEETINGS_GROUP_ID,
+    payload:id
+  }
+}

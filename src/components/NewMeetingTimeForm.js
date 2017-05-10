@@ -24,7 +24,7 @@ class NewMeetingTimeForm extends Component{
     return (
       <button
         onClick={boundDeleteTypeClicked}
-        className="button is-outlined is-primary"
+        className="button is-outlined is-primary scta-MeetingTimeCard_SpanButtonWidth"
         key={key}>
         {t.abbreviation}
       </button>
@@ -59,7 +59,7 @@ class NewMeetingTimeForm extends Component{
           addMeetingTypeToMeetingTime={this.props.addMeetingTypeToMeetingTime}
         />
         <div className="scta-meeting-time-card-types">
-          {typesMapped.length==0?<span className="button is-outlined is-primary">NONE</span>:typesMapped}
+          {typesMapped.length==0?<span className="button is-outlined is-primary scta-MeetingTimeCard_SpanButtonWidth">NONE</span>:typesMapped}
         </div>
       </div>
       <div className="scta-meeting-time-card-delete">

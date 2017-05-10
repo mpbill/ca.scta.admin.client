@@ -2,7 +2,8 @@ import * as types from '../../constants/actionTypes';
 
 let getDefaultState=()=>{
   return {
-    isLoading:true,
+    isLoading:false,
+    isLoaded:false,
     meetingGroups:{}
   };
 };
@@ -15,7 +16,7 @@ export default function meetingGroupsData(state=getDefaultState(),action) {
     case types.MEETING_GROUPS_DATA_GET_ALL:
       return {...state,isLoading:true};
     case types.MEETING_GROUPS_DATA_GET_ALL_RETURNED:
-      return {...state,isLoading:false,meetingGroups:action.payload};
+      return {...state,isLoading:false,isLoaded:true,meetingGroups:action.payload};
     default:
       return state;
   }

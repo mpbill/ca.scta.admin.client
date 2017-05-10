@@ -66,22 +66,29 @@ class DeleteTable extends Component{
   numberOfColumns(){
     return this.props.columnConfigs.length+2;
   }
-  static multiplicateElement(elem,n){
+  static emptyTableDataGenerator(n){
     let elements=[];
     if(n){
       for(let i=0;i<n;i++){
-        eleme
+        elements.push(<td key={i}/>)
       }
+    }
+    return elements;
+  }
+  componentWillMount(){
+    if(!this.props.isLoading && !this.props.isLoaded){
+      this.props.loadFunction();
     }
   }
   render(){
-    let that=this;
     let header = this.makeHeader();
     let rows = Object.keys(this.props.rowsObject).map(this.valueRowMapper);
-
-    let newLink=null;
+    let newLink=null,newRow=null;
     if(this.props.newLink){
-      newLink = <tr><Link className="button is-primary" to={this.props.newLink}><span className="fa fa-plus"/></Link></tr>;
+      newLink = <Link className="button is-primary" to={this.props.newLink}><span className="fa fa-plus"/></Link>;
+      let emptyCells=DeleteTable.emptyTableDataGenerator(this.numberOfColumns()-1);
+      let newCell= <td key="new-cell">{newLink}</td>
+      newRow=<tr>{emptyCells}{newCell}</tr>
     }
     let tableContainerClassNames=classNames('scta-DeleteTable_TableContainer',{'scta-DeleteTable_TableContainer_IsLoading':this.props.isLoading});
     let loadingIconWrapperClassNames = classNames('scta-DeleteTable_LoadingIcon',{'scta-DeleteTable_LoadingIcon_TableIsLoading':this.props.isLoading});
@@ -94,13 +101,13 @@ class DeleteTable extends Component{
             {header}
             <tbody>
             {rows}
+            {newRow}
             </tbody>
 
           </table>
 
 
         </div>
-        {newLink}
       </div>
     );
   }
@@ -113,7 +120,12 @@ DeleteTable.propTypes={
     prop:PropTypes.string
   })).isRequired,
   rowsObject:PropTypes.PropTypes.object.isRequired,
-  newLink:PropTypes.string
+  newLink:PropTypes.string,
+  isLoading:PropTypes.bool.isRequired,
+  isLoaded:PropTypes.bool.isRequired,
+  loadFunction:PropTypes.func.isRequired,
+
+
 };
 
 export default DeleteTable;

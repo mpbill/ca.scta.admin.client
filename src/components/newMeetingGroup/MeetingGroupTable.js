@@ -3,9 +3,6 @@ import DeleteTable from '../DeleteTable/DeleteTable';
 import PropTypes from 'prop-types';
 import './MeetingGroupTable.scss';
 class MeetingGroupTable extends Component{
-  componentWillMount(){
-    this.props.loadMeetingGroups();
-  }
   render(){
     let loadMeetingGroups = this.props.toggleLoading;
 
@@ -13,7 +10,14 @@ class MeetingGroupTable extends Component{
 
     return (
       <div className="scta-MeetingGroupsTable">
-        <DeleteTable isLoading={this.props.meetingGroupsData.isLoading} columnConfigs={columnConfigs} rowsObject={this.props.meetingGroupsData.meetingGroups} deleteFunction={this.props.deleteMeetingGroup} newLink="/meetingGroups/new"/>
+        <DeleteTable
+          isLoaded={this.props.meetingGroupsData.isLoaded}
+          loadFunction={this.props.loadMeetingGroups}
+          isLoading={this.props.meetingGroupsData.isLoading}
+          columnConfigs={columnConfigs}
+          rowsObject={this.props.meetingGroupsData.meetingGroups}
+          deleteFunction={this.props.deleteMeetingGroup}
+          newLink="/meetingGroups/new"/>
       </div>
     );
   }

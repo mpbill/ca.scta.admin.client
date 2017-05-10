@@ -43,6 +43,9 @@ export default function newMeetingReducer(state=getDefaultState(),action) {
       newMeeting={...state.newMeeting,name:action.name};
       newState={...state,newMeeting};
       break;
+    case types.SET_NEW_MEETINGS_GROUP_ID:
+      newState={...state,newMeeting:{...state.newMeeting,meetingGroupId:action.payload}};
+      break;
     default:
       newState=state;
   }
