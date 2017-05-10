@@ -8,7 +8,8 @@ export const NewMeetingGroupPageConstructor=(props)=>{
     <NewMeetingGroupForm
       updateName={props.actions.updateName}
       updatePath={props.actions.updatePath}
-      newMeetingGroupForm={props.newMeetingGroupForm} />
+      newMeetingGroupForm={props.newMeetingGroupForm}
+      createMeetingGroup={props.actions.saveNewMeetingGroup} />
   );
 };
 

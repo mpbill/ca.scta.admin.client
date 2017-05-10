@@ -5,7 +5,7 @@ import AddressListPage from './containers/AddressListPage';
 import App from './components/App';
 import GenericContainer from './containers/GenericContainer';
 import NewMeetingPage from './containers/NewMeetingPage';
-import DeleteTableTestPage from './containers/DeleteTableTestPage';
+import MeetingGroupsTablePage from './containers/meetingGroups/MeetingGroupsTablePage';
 import NewMeetingGroupPage from './containers/meetingGroups/newMeetingGroupPage';
 export default (
   <Route path="/" component={App}>
@@ -18,8 +18,9 @@ export default (
       <Route path="new" component={NewMeetingPage}/>
     </Route>
     <Route path="meetingGroups" component={GenericContainer}>
-      <IndexRedirect to="/meetingGroups/new"/>
+      <IndexRoute component={MeetingGroupsTablePage}/>
       <Route path="new" component={NewMeetingGroupPage}/>
+
     </Route>
   </Route>
 );

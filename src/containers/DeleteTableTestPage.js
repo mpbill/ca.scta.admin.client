@@ -2,7 +2,7 @@
  * Created by michael.billingham on 4/19/2017.
  */
 import React from 'react';
-import DeleteTable from '../components/DeleteTable';
+import DeleteTable from '../components/DeleteTable/DeleteTable';
 
 let headerConfObjects=[
   DeleteTable.makeHeaderConfObj("Column 1","col1"),

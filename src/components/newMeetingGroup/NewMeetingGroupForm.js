@@ -9,11 +9,11 @@ class NewMeetingGroupForm extends Component{
 
   constructor(props){
     super(props);
-    // bindHelper(this,this.saveClicked);
+    this.saveClicked=this.saveClicked.bind(this);
 
   }
   saveClicked(){
-    console.log("it worked");
+    this.props.createMeetingGroup(this.props.newMeetingGroupForm.meetingGroup);
 
   }
   render(){
@@ -22,10 +22,10 @@ class NewMeetingGroupForm extends Component{
       'is-disabled':!this.props.newMeetingGroupForm.isValid
     });
     return (
-      <div>
-        <h3>New Meeting Group</h3>
+      <div className="container">
+        <h1 className="title">New Meeting Group</h1>
         <TextInputComponent value={this.props.newMeetingGroupForm.meetingGroup.name} updateProp={this.props.updateName}>Name</TextInputComponent>
-        <TextInputComponent value={this.props.newMeetingGroupForm.meetingGroup.path} updateProp={this.props.updatePath}>Name</TextInputComponent>
+        <TextInputComponent value={this.props.newMeetingGroupForm.meetingGroup.path} updateProp={this.props.updatePath}>Path</TextInputComponent>
         <h2 className="scta-NewMeetingGroupForm_LinkPreview">http://ca-scta.org/meetings/{this.props.newMeetingGroupForm.meetingGroup.path}</h2>
         <button className={buttonClasses} onClick={this.saveClicked}>Save</button>
       </div>
@@ -42,7 +42,8 @@ NewMeetingGroupForm.propTypes={
     })
   }).isRequired,
   updateName:PropTypes.func.isRequired,
-  updatePath:PropTypes.func.isRequired
+  updatePath:PropTypes.func.isRequired,
+  createMeetingGroup:PropTypes.func.isRequired
 };
 
 export default NewMeetingGroupForm;

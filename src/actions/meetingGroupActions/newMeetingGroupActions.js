@@ -21,7 +21,9 @@ export function saveNewMeetingGroup(meetingGroup) {
     api.post('genericApi/meetingGroups',meetingGroup)
     .then(()=>{
       dispatch({type:types.NEW_MEETING_GROUP_RESET});
+      dispatch({type:types.MEETING_GROUPS_DATA_GET_ALL});
       dispatch(push("/meetingGroups"));
+
 
     })
     .error(console.log);

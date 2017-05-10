@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import './DeleteTable.scss';
 class DeleteTable extends Component{
   constructor(props){
     super(props);
@@ -31,29 +33,30 @@ class DeleteTable extends Component{
     else
       console.warn("no delete function bound");
   }
-  valueRowMapper(vObj,i){
+  valueRowMapper(key,i){
+    let vObj=this.props.rowsObject[key];
     let valueCellMapper=function (confObj,j) {
-      let key = i.toString()+j.toString();
-      return <td key={key}>{vObj[confObj.prop]}</td>;
+      let cellKey = key+j.toString();
+      return <td key={cellKey}>{vObj[confObj.prop]}</td>;
     };
-    let indexKey = i+"_index";
+    let indexKey = key+"_index";
     let indexCell=[<td key={indexKey}>{i+1}</td>];
     let customCells = this.props.columnConfigs.map(valueCellMapper);
-    let modKey=i+"_mod";
+    let modKey=key+"_mod";
     let modButtons=[];
     if(this.props.deleteFunction){
       let boundDelete = this.deleteFunc.bind(this,vObj._id);
-      let deleteKey=i+"_delete";
-      modButtons.push(<button key={deleteKey} className="button is-danger" onClick={boundDelete}><span className="fa fa-minus"/></button>);
+      let deleteKey=key+"_delete";
+      modButtons.push(<button key={deleteKey} className="button is-danger" onClick={boundDelete}><span className="fa fa-remove"/></button>);
     }
     if(this.props.editRootLink) {
-      let editKey = i + "_edit";
+      let editKey = key + "_edit";
       let editUri = this.props.editRootLink+"/"+vObj._id;
       modButtons.push(<Link key={editKey} to={editUri} className="button is-primary"><span className="fa fa-pencil" /></Link>);
     }
     let modCells=[<td key={modKey}>{modButtons}</td> ];
     let allCells = indexCell.concat(customCells).concat(modCells);
-    let rowId=i+"_row";
+    let rowId=key+"_row";
     let row = <tr key={rowId}>{allCells}</tr>;
     return row;
 
@@ -61,17 +64,29 @@ class DeleteTable extends Component{
 
   render(){
     let header = this.makeHeader();
-    let rows = this.props.rowObjects.map(this.valueRowMapper);
+    let rows = Object.keys(this.props.rowsObject).map(this.valueRowMapper);
+
+    let newLink=null;
+    if(this.props.newLink){
+      newLink = <Link className="button is-primary" to={this.props.newLink}><span className="fa fa-plus"/></Link>
+    }
+    let loadingClassNames = classNames('scta-DeleteTable_Loading',{'scta-DeleteTable_LoadingHidden':this.props.isLoading});
     return(
-      <div className="delete-table">
+      <div className="scta-DeleteTable">
+
         <div>
+          <div className={loadingClassNames}><div className="icon"><i className="fa fa-refresh fa-spin fa-4x fa-fw"/></div></div>
           <table className="table">
             {header}
             <tbody>
             {rows}
             </tbody>
+
           </table>
+
+
         </div>
+        {newLink}
       </div>
     );
   }
@@ -83,8 +98,8 @@ DeleteTable.propTypes={
     label:PropTypes.string,
     prop:PropTypes.string
   })).isRequired,
-  rowObjects:PropTypes.arrayOf(PropTypes.object).isRequired
-
+  rowsObject:PropTypes.PropTypes.object.isRequired,
+  newLink:PropTypes.string
 };
 
 export default DeleteTable;
