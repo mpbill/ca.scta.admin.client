@@ -17,10 +17,13 @@ export default function (state=getDefaultState(),action) {
     case types.NEW_MEETING_GROUP_RESET:
       return getDefaultState();
     case types.NEW_MEETING_GROUP_UPDATE_NAME:
-      if(state.meetingGroup.path){
-        return {...state,isValid:(action.name && state.meetingGroup.path),meetingGroup:{...state.meetingGroup,name:action.name}};
+      if(state.hasUserTouchedPath) {
+        return {
+          ...state,
+          isValid: (action.name && state.meetingGroup.path),
+          meetingGroup: {...state.meetingGroup, name: action.name}
+        };
       }
-      debugger;
       let splitNames = action.name.split(" ");
       let firstWord=splitNames[0].toLowerCase();
       splitNames.shift();
@@ -31,7 +34,11 @@ export default function (state=getDefaultState(),action) {
       if(action.path.includes(" ")){
         return state;
       }
-      return {...state,isValid:(state.meetingGroup.name && action.path),meetingGroup:{...state.meetingGroup,path:action.path}};
+      let updatedPathValue=false;
+      if(action.path){
+        updatedPathValue=true;
+      }
+      return {...state,isValid:(state.meetingGroup.name && action.path),meetingGroup:{...state.meetingGroup,path:action.path},hasUserTouchedPath:updatedPathValue};
 
     default:
       return state;

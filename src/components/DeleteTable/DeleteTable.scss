@@ -10,7 +10,6 @@ $transitionTime:.9s;
   height: 100%;
   z-index: 1;
   visibility: hidden;
-  transition: visibility $transitionTime;
 
 }
 .scta-DeleteTable_LoadingIcon.scta-DeleteTable_LoadingIcon_TableIsLoading{
@@ -20,22 +19,15 @@ $transitionTime:.9s;
 
 .scta-DeleteTable_TableContainer{
   position: relative;
-
-
 }
-.scta-DeleteTable_TableContainer.scta-DeleteTable_TableContainer_IsLoading{
 
-
-}
 .scta-DeleteTable_Table.scta-DeleteTable_Table_TableIsLoading{
   top:-1000px;
-
-  transition: top ease-in-out $transitionTime;
+  visibility: hidden;
 }
+
 .scta-DeleteTable_Table{
-  top:0;
-  z-index: 10;
-  transition: top ease-in-out $transitionTime;
+  visibility: visible;
   position: relative;
 }
 
