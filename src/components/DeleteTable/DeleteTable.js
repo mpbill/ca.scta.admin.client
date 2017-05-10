@@ -8,6 +8,7 @@ class DeleteTable extends Component{
     super(props);
     this.makeHeader=this.makeHeader.bind(this);
     this.valueRowMapper=this.valueRowMapper.bind(this);
+    this.numberOfColumns=this.numberOfColumns.bind(this);
   }
   static makeHeaderConfObj(label,prop){
     return {
@@ -45,9 +46,10 @@ class DeleteTable extends Component{
     let modKey=key+"_mod";
     let modButtons=[];
     if(this.props.deleteFunction){
+      let deleteButtonClasses=classNames('button','is-danger',{'is-loading':this.props.isLoading,'is-disabled':this.props.isDisabled});
       let boundDelete = this.deleteFunc.bind(this,vObj._id);
       let deleteKey=key+"_delete";
-      modButtons.push(<button key={deleteKey} className="button is-danger" onClick={boundDelete}><span className="fa fa-remove"/></button>);
+      modButtons.push(<button key={deleteKey} className={deleteButtonClasses} onClick={boundDelete}><span className="fa fa-remove"/></button>);
     }
     if(this.props.editRootLink) {
       let editKey = key + "_edit";
@@ -61,7 +63,17 @@ class DeleteTable extends Component{
     return row;
 
   }
-
+  numberOfColumns(){
+    return this.props.columnConfigs.length+2;
+  }
+  static multiplicateElement(elem,n){
+    let elements=[];
+    if(n){
+      for(let i=0;i<n;i++){
+        eleme
+      }
+    }
+  }
   render(){
     let that=this;
     let header = this.makeHeader();
@@ -69,7 +81,7 @@ class DeleteTable extends Component{
 
     let newLink=null;
     if(this.props.newLink){
-      newLink = <Link className="button is-primary" to={this.props.newLink}><span className="fa fa-plus"/></Link>;
+      newLink = <tr><Link className="button is-primary" to={this.props.newLink}><span className="fa fa-plus"/></Link></tr>;
     }
     let tableContainerClassNames=classNames('scta-DeleteTable_TableContainer',{'scta-DeleteTable_TableContainer_IsLoading':this.props.isLoading});
     let loadingIconWrapperClassNames = classNames('scta-DeleteTable_LoadingIcon',{'scta-DeleteTable_LoadingIcon_TableIsLoading':this.props.isLoading});
