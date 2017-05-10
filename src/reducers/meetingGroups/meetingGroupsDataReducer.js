@@ -4,11 +4,13 @@ let getDefaultState=()=>{
   return {
     isLoading:true,
     meetingGroups:{}
-  }
+  };
 };
 
 export default function meetingGroupsData(state=getDefaultState(),action) {
   switch(action.type){
+    case types.MEETING_GROUPS_DATA_TOGGLE_LOADING:
+      return {...state,isLoading:!state.isLoading};
     case types.MEETING_GROUPS_DATA_LOADING:
     case types.MEETING_GROUPS_DATA_GET_ALL:
       return {...state,isLoading:true};

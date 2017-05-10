@@ -63,20 +63,22 @@ class DeleteTable extends Component{
   }
 
   render(){
+    let that=this;
     let header = this.makeHeader();
     let rows = Object.keys(this.props.rowsObject).map(this.valueRowMapper);
 
     let newLink=null;
     if(this.props.newLink){
-      newLink = <Link className="button is-primary" to={this.props.newLink}><span className="fa fa-plus"/></Link>
+      newLink = <Link className="button is-primary" to={this.props.newLink}><span className="fa fa-plus"/></Link>;
     }
-    let loadingClassNames = classNames('scta-DeleteTable_Loading',{'scta-DeleteTable_LoadingHidden':this.props.isLoading});
+    let tableContainerClassNames=classNames('scta-DeleteTable_TableContainer',{'scta-DeleteTable_TableContainer_IsLoading':this.props.isLoading});
+    let loadingIconWrapperClassNames = classNames('scta-DeleteTable_LoadingIcon',{'scta-DeleteTable_LoadingIcon_TableIsLoading':this.props.isLoading});
+    let tableClassNames=classNames("table","scta-DeleteTable_Table",{"scta-DeleteTable_Table_TableIsLoading":this.props.isLoading});
     return(
       <div className="scta-DeleteTable">
-
-        <div>
-          <div className={loadingClassNames}><div className="icon"><i className="fa fa-refresh fa-spin fa-4x fa-fw"/></div></div>
-          <table className="table">
+        <div className={tableContainerClassNames}>
+          <div className={loadingIconWrapperClassNames}><div className="icon is-large"><i className="fa fa-refresh fa-spin fa-4x fa-fw"/></div></div>
+          <table className={tableClassNames}>
             {header}
             <tbody>
             {rows}

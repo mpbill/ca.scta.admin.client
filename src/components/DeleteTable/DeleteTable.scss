@@ -1,17 +1,41 @@
-.scta-DeleteTable_Loading{
+$transitionTime:.9s;
+
+.scta-DeleteTable_LoadingIcon{
   position: absolute;
   top:0;
-  background: rgba(0,0,0,.05);
-  border-radius: 10px;
-
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
-  z-index: 10;
+  z-index: 1;
+  visibility: hidden;
+  transition: visibility $transitionTime;
 
 }
-.scta-DeleteTable > div{
+.scta-DeleteTable_LoadingIcon.scta-DeleteTable_LoadingIcon_TableIsLoading{
+  display: flex;
+  visibility: visible;
+}
+
+.scta-DeleteTable_TableContainer{
+  position: relative;
+
+
+}
+.scta-DeleteTable_TableContainer.scta-DeleteTable_TableContainer_IsLoading{
+
+
+}
+.scta-DeleteTable_Table.scta-DeleteTable_Table_TableIsLoading{
+  top:-1000px;
+
+  transition: top ease-in-out $transitionTime;
+}
+.scta-DeleteTable_Table{
+  top:0;
+  z-index: 10;
+  transition: top ease-in-out $transitionTime;
   position: relative;
 }
+

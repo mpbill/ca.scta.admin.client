@@ -26,7 +26,7 @@ export function saveNewMeetingGroup(meetingGroup) {
 
 
     })
-    .error(console.log);
+    .catch(console.log);
   };
 }
 

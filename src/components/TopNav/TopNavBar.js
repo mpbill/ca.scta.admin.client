@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import './TopNavBar.scss'
 const NavLink=(props)=><Link to={props.to} className="nav-item is-tab" activeClassName="is-active">{props.children}</Link>;
 class TopNavBar extends React.Component{
   constructor(props){
@@ -7,7 +8,7 @@ class TopNavBar extends React.Component{
   }
   render(){
     return (
-      <nav className="nav">
+      <nav className="nav scta-TopNavBar">
         <div className="nav-left">
           <NavLink to="/addresses">Addresses</NavLink>
           <NavLink to="/meetings">Addresses</NavLink>

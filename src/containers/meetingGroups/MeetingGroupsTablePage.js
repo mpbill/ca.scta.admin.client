@@ -11,6 +11,7 @@ export const MeetingGroupTablePageConstructor=(props)=>{
       deleteMeetingGroup={props.actions.deleteMeetingGroup}
       loadMeetingGroups={props.actions.getAllMeetingGroups}
       meetingGroupsData={props.meetingGroupsData}
+      toggleLoading={props.actions.toggleLoading}
     />
   );
 };

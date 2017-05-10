@@ -5,7 +5,7 @@ import * as logonFormActions from '../actions/logonFormActions';
 import * as currentUserActions from '../actions/currentUserActions';
 import {bindActionCreators} from 'redux';
 import LoginForm from '../containers/AuthContainer';
-import TopNavBar from './TopNavBar';
+import TopNavBar from './TopNav/TopNavBar';
 import {connect} from 'react-redux';
 
 class App extends React.Component {
