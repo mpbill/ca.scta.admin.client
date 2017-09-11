@@ -1,10 +1,10 @@
 import React,{Component} from 'react';
-import NewMeetingTimeForm from '../components/NewMeetingTimeForm';
-import dayOfWeekEnumToString from '../helpers/dayOfWeekEnumToString';
-import zeroPad from '../helpers/zeroPad';
-import AddressSelectBox from './AddressSelectBox';
-import MeetingGroupSelectBox from './MeetingGroupSelectBox/MeetingGroupSelectBox';
-
+import NewMeetingTimeForm from '../NewMeetingTimeForm/NewMeetingTimeForm';
+import dayOfWeekEnumToString from '../../helpers/dayOfWeekEnumToString';
+import zeroPad from '../../helpers/zeroPad';
+import AddressSelectBox from '../AddressSelectBox/AddressSelectBox';
+import MeetingGroupSelectBox from '../MeetingGroupSelectBox/MeetingGroupSelectBox';
+import './NewMeetingForm.scss';
 class NewMeetingForm extends Component{
   constructor(props){
     super(props);

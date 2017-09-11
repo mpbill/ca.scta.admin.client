@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import './TopNavBar.scss'
+import './TopNavBar.scss';
 const NavLink=(props)=><Link to={props.to} className="nav-item is-tab" activeClassName="is-active">{props.children}</Link>;
 class TopNavBar extends React.Component{
   constructor(props){

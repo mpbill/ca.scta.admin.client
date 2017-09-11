@@ -2,10 +2,9 @@ import React from 'react';
 import * as actions from '../../actions/meetingGroupActions/meetingGroupsDataActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-
+import './MeetingGroupSelectBox.scss';
 
 let MeetingGroupSelectBoxComponent=function (props) {
-  debugger;
   let optionsMapper=(key)=>{
     return (
       <option key={key} value={key}>
@@ -19,28 +18,26 @@ let MeetingGroupSelectBoxComponent=function (props) {
   }
   let options = Object.keys(props.meetingGroupsData.meetingGroups).map(optionsMapper);
 
-  let onInput = (e)=>{props.selectionChanged(e.target.value)};
+  let onInput = (e)=>{props.selectionChanged(e.target.value);};
   onInput=onInput.bind(this);
 
   return (
     <div className="control">
-      <div className="select">
-        <select onInput={onInput}>
+      <div className="select scta-MeetingGroupSelectBox_SelectContainer">
+        <select onInput={onInput} className="scta-MeetingGroupSelectBox_Select">
           {options}
         </select>
       </div>
     </div>
-  )
+  );
 };
 
 function mapStateToProps(state) {
-  debugger;
   return {
     meetingGroupsData:state.meetingGroup.meetingGroupsData
   };
 }
 function mapDispatchToProps(dispatch) {
-  debugger;
   return {
     actions:bindActionCreators(actions,dispatch)
   };

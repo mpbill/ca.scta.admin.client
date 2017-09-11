@@ -1,0 +1,14 @@
+@import "../../styles/variables";
+
+.scta-NewMeetingTimeForm_Card{
+  background-color: $scta-CardBackground;
+  padding: 15px;
+  border: 1px solid $scta-CardBorder;
+  border-radius: 5px;
+  display: flex;
+  flex-flow: column;
+
+}
+.scta-NewMeetingTimeForm_CardHeader{
+
+}

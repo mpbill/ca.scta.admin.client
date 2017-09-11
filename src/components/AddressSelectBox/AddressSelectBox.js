@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+import './AddressSelectBox.scss';
 class AddressSelectBox extends Component{
   constructor(props){
     super(props);
@@ -32,8 +32,8 @@ class AddressSelectBox extends Component{
     options.unshift(<option key={0} value={this.selectValue}>Select...</option>);
     return (
       <div className="control">
-        <div className="select address-select">
-          <select onInput={this.onSelectInput}>
+        <div className="select scta-AddressSelectBox_SelectContainer">
+          <select onInput={this.onSelectInput} className="scta-AddressSelectBox_SelectElement">
             {options}
           </select>
         </div>

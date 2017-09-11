@@ -1,7 +1,10 @@
-@import "../../node_modules/bulma/sass/utilities/all";
+@import "~bulma";
 $scta-half:30px;
 $scta-full:$scta-half*2;
 $red:lighten($red,.5);
 $danger:$red;
 $scta-height:40px;
-@import "~bulma";
+
+$scta-PageBackground: #e9ebee;
+$scta-CardBackground: #f6f7f9;
+$scta-CardBorder:#DFE0E4;

@@ -6,7 +6,7 @@ import * as meetingTypeSelectBoxActions from '../actions/meetingTypeSelectBoxAct
 import * as allAddressActions from '../actions/allAddressesActions';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import NewMeetingForm from '../components/NewMeetingForm';
+import NewMeetingForm from '../components/NewMeetingForm/NewMeetingForm';
 import PropTypes from 'prop-types';
 
 const NewMeetingPage=(props)=>{

@@ -1,9 +1,8 @@
-
+@import "~bulma";
 @import "variables";
 @import "MeetingTypeDropdown";
-@import "NewMeetingForm";
 html{
-  background-color: #e9ebee;
+  background-color: $scta-PageBackground;
 }
 
 

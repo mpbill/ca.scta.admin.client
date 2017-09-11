@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
-import MeetingTypeDropdown from './MeetingTypeDropdown';
-import dayOfWeekEnumToString from '../helpers/dayOfWeekEnumToString';
-import zeroPad from '../helpers/zeroPad';
+import MeetingTypeDropdown from '../MeetingTypeDropdown';
+import dayOfWeekEnumToString from '../../helpers/dayOfWeekEnumToString';
+import zeroPad from '../../helpers/zeroPad';
 import PropTypes from 'prop-types';
+import './NewMeetingTimeForm.scss';
 class NewMeetingTimeForm extends Component{
   constructor(props){
     super(props);
@@ -35,7 +36,24 @@ class NewMeetingTimeForm extends Component{
     let meetingTypeKeysArray=Object.keys(this.props.newMeetingTime.meetingTypes);
     let typesMapped = meetingTypeKeysArray.map(this.meetingTypeMapper);
     return (
-    <div className="scta-meeting-time-card scta-card">
+    <div className="scta-NewMeetingTimeForm_Card">
+      <div className="scta-NewMeetingTimeForm_CardHeader">
+        <div className="scta-meeting-time-datetime">
+          <span className="scta-button-flag-full">
+            {dayOfWeekEnumToString(this.props.newMeetingTime.dayOfWeek)}
+          </span>
+          <span className="scta-button-flag-full">
+            {zeroPad(this.props.newMeetingTime.hour)}
+          </span>
+          <span className="scta-colon-button-flag">:</span>
+          <span className="scta-button-flag-full">
+            {zeroPad(this.props.newMeetingTime.minute)}
+          </span>
+          <span className="scta-button-flag-full">
+            {this.props.newMeetingTime.meridiem}
+          </span>
+        </div>
+      </div>
       <div className="scta-meeting-time-card-body">
         <div className="scta-meeting-time-datetime">
           <span className="scta-button-flag-full">

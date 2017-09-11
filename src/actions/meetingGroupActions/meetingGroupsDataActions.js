@@ -13,7 +13,7 @@ export function getAllMeetingGroups() {
 export function toggleLoading() {
   return {
     type:types.MEETING_GROUPS_DATA_TOGGLE_LOADING
-  }
+  };
 }
 
 export function deleteMeetingGroup(id) {

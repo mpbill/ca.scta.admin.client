@@ -70,7 +70,7 @@ class DeleteTable extends Component{
     let elements=[];
     if(n){
       for(let i=0;i<n;i++){
-        elements.push(<td key={i}/>)
+        elements.push(<td key={i}/>);
       }
     }
     return elements;
@@ -87,8 +87,8 @@ class DeleteTable extends Component{
     if(this.props.newLink){
       newLink = <Link className="button is-primary" to={this.props.newLink}><span className="fa fa-plus"/></Link>;
       let emptyCells=DeleteTable.emptyTableDataGenerator(this.numberOfColumns()-1);
-      let newCell= <td key="new-cell">{newLink}</td>
-      newRow=<tr>{emptyCells}{newCell}</tr>
+      let newCell= <td key="new-cell">{newLink}</td>;
+      newRow=<tr>{emptyCells}{newCell}</tr>;
     }
     let tableContainerClassNames=classNames('scta-DeleteTable_TableContainer',{'scta-DeleteTable_TableContainer_IsLoading':this.props.isLoading});
     let loadingIconWrapperClassNames = classNames('scta-DeleteTable_LoadingIcon',{'scta-DeleteTable_LoadingIcon_TableIsLoading':this.props.isLoading});
