@@ -5,7 +5,7 @@ import AddressListPage from './containers/AddressListPage';
 import App from './components/App';
 import GenericContainer from './containers/GenericContainer';
 import NewMeetingPage from './containers/NewMeetingPage';
-
+import NextAreaMeetingPage from './containers/NextAreaMeetingPage';
 
 export default (
   <Route path="/" component={App}>
@@ -17,5 +17,7 @@ export default (
       <IndexRedirect to="/meetings/new"/>
       <Route path="new" component={NewMeetingPage}/>
     </Route>
+    <Route path="next-area-meeting" component={NextAreaMeetingPage} />
+
   </Route>
 );

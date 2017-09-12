@@ -18,6 +18,7 @@ class TopNavBar extends React.Component{
         <div className="nav-left">
           <Link to="/addresses" className="nav-item is-tab" activeClassName="is-active">Addresses</Link>
           <Link to="/meetings" className="nav-item is-tab" activeClassName="is-active">Meetings</Link>
+          <Link to="/next-area-meeting" className="nav-item is-tab" activeClassName="is-active">Next Area Meeting </Link>
         </div>
       </nav>
     )

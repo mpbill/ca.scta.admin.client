@@ -16,8 +16,7 @@ export function login(username,password) {
   return function (dispatch) {
     dispatch({type:types.REQUEST_LOGIN});
     api.post('login',{
-      username:username,
-      password:password
+      Password:password
     })
       .then(({data})=>{
         dispatch({type:types.LOGIN_RETURNED,isLoggedIn:true});
