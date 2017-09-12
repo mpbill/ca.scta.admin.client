@@ -3,7 +3,7 @@ import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 import logger from 'redux-logger';
-
+import * as config from '../config';
 function configureStoreProd(initialState) {
   const middlewares = [
     // Add other middleware on this line...
@@ -49,6 +49,6 @@ function configureStoreDev(initialState) {
   return store;
 }
 
-const configureStore = process.env.NODE_ENV === 'production' ? configureStoreProd : configureStoreDev;
+const configureStore = config.PRODUCTION ? configureStoreProd : configureStoreDev;
 
 export default configureStore;

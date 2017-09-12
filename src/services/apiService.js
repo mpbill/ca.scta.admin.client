@@ -15,10 +15,11 @@ function mangleConfig(config) {
   let mangledConfig = { ...config, withCredentials: true,headers:{...config.headers,'Access-Control-Allow-Origin': '*'}};
   return mangledConfig;
 }
+const DEVELOPMENT=true;
 
 function checkForAuthError(error) {
   console.log(error);
-  if(error && error.response && error.response.status === 401) {
+  if(error && error.response && error.response.status === 401 && !DEVELOPMENT) {
     store().dispatch(unauthorizedException());
     return;
   }

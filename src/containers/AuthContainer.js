@@ -28,7 +28,7 @@ class LoginForm extends Component{
       <div className="column is-4 is-offset-4">
         <label className="label">Username</label>
         <div className="control">
-          <input className="input" type="text" id={'username'} value={this.props.loginForm.username} onInput={this.usernameChanged} />
+          <input disabled={true} className="input" type="text" id={'username'} value={this.props.loginForm.username} onInput={this.usernameChanged} />
         </div>
         <label className="label">Password</label>
         <div className="control">
