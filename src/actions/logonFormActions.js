@@ -38,7 +38,7 @@ export function unauthorizedException() {
 export function getCurrentUser() {
   return function (dispatch) {
     dispatch({type:types.GET_CURRENT_USER});
-    api.get('/user')
+    api.get('/users/current')
       .then((response)=>{
         if(response) {
           dispatch({type: types.GET_CURRENT_USER_RETURNED, user: response.data});
