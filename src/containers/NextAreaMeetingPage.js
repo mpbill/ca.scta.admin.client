@@ -13,10 +13,14 @@ class NextAreaMeetingForm extends Component{
     this.updateTextField = this.updateTextField.bind(this);
     this.updateDate=this.updateDate.bind(this);
     this.updateTime=this.updateTime.bind(this);
+    this.saveClicked=this.saveClicked.bind(this);
   }
   componentWillMount(){
+    this.props.getCurrentNextAreaMeeting();
 
-
+  }
+  saveClicked(){
+    this.props.saveNewNextAreaMeeting(this.props.nextAreaMeeting.data);
   }
   updateTextField(e){
     this.props.updateTextField(e.target.id,e.target.value);
@@ -33,13 +37,13 @@ class NextAreaMeetingForm extends Component{
       <div className="column is-4 is-offset-4">
         <label className="label">Date</label>
         <div className="control">
-          <DatePicker selected={this.props.nextAreaMeeting.newNextAreaMeeting.data.dateTime} onChange={this.updateDate}/>
+          <DatePicker selected={this.props.nextAreaMeeting.data.dateTime} onChange={this.updateDate}/>
         </div>
         <label className="label">Time</label>
         <div className="control">
           <TimePicker
             showSecond={false}
-            value={this.props.nextAreaMeeting.newNextAreaMeeting.data.dateTime}
+            value={this.props.nextAreaMeeting.data.dateTime}
             format={'h:mm a'}
             use12Hours
             onChange={this.updateTime}
@@ -47,32 +51,32 @@ class NextAreaMeetingForm extends Component{
         </div>
         <label className="label">Location Name</label>
         <div className="control">
-          <input className="input" type="text" id={'locationName'} value={this.props.nextAreaMeeting.newNextAreaMeeting.data.locationName} onChange={this.updateTextField} />
+          <input className="input" type="text" id={'locationName'} value={this.props.nextAreaMeeting.data.locationName} onChange={this.updateTextField} />
         </div>
         <label className="label">Street</label>
         <div className="control">
-          <input className="input" type="text" id={'street'} value={this.props.nextAreaMeeting.newNextAreaMeeting.data.street} onChange={this.updateTextField} />
+          <input className="input" type="text" id={'street'} value={this.props.nextAreaMeeting.data.street} onChange={this.updateTextField} />
         </div>
         <label className="label">City</label>
         <div className="control">
-          <input className="input" type="text" id={'city'} value={this.props.nextAreaMeeting.newNextAreaMeeting.data.city}  onChange={this.updateTextField} />
+          <input className="input" type="text" id={'city'} value={this.props.nextAreaMeeting.data.city}  onChange={this.updateTextField} />
         </div>
         <label className="label">State</label>
         <div className="control">
-          <input className="input" type="text" id={'state'} value={this.props.nextAreaMeeting.newNextAreaMeeting.data.state}  onChange={this.updateTextField} />
+          <input className="input" type="text" id={'state'} value={this.props.nextAreaMeeting.data.state}  onChange={this.updateTextField} />
         </div>
         <label className="label">Zip</label>
         <div className="control">
-          <input className="input" type="text" id={'zip'} value={this.props.nextAreaMeeting.newNextAreaMeeting.data.zip} onChange={this.updateTextField} />
+          <input className="input" type="text" id={'zip'} value={this.props.nextAreaMeeting.data.zip} onChange={this.updateTextField} />
         </div>
         <label className="label">Map Link</label>
         <div className="control">
-          <input className="input" type="text" id={'mapLink'} value={this.props.nextAreaMeeting.newNextAreaMeeting.data.mapLink}  onChange={this.updateTextField} />
+          <input className="input" type="text" id={'mapLink'} value={this.props.nextAreaMeeting.data.mapLink}  onChange={this.updateTextField} />
         </div>
 
 
         <div className="control">
-          <button className="button is-primary" onClick={this.loginClicked}>Save</button>
+          <button className="button is-primary" onClick={this.saveClicked}>Save</button>
         </div>
       </div>
     )
@@ -87,6 +91,8 @@ export const NextAreaMeetingPage=(props)=>{
       updateTextField={props.actions.updateTextField}
       updateDate={props.actions.updateDate}
       updateTime={props.actions.updateTime}
+      getCurrentNextAreaMeeting={props.actions.getCurrentNextAreaMeeting}
+      saveNewNextAreaMeeting={props.actions.saveNewNextAreaMeeting}
       />
 
   );
