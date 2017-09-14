@@ -26,22 +26,15 @@ export function updateTime(time){
 export function getCurrentNextAreaMeeting(){
   return function (dispatch) {
     dispatch({type:types.NEXT_AREA_MEETING_REQUEST_CURRENT_AREA_MEETING});
-    //api.get('currentAreaMeeting').then((data)=>dispatch({type:types.NEXT_AREA_MEETING_REQUEST_CURRENT_AREA_MEETING_RETURNED,payload:data}));
-    setTimeout(dispatch({type:types.NEXT_AREA_MEETING_REQUEST_CURRENT_AREA_MEETING_RETURNED,payload:{
-      dateTime:moment(),
-      locationName:'Club 101',
-      street:'blah',
-      city:'blah',
-      state:'blah',
-      zip:'blah'
-    }}),500);
+    api.get('areaMeetings/latest').then((data)=>dispatch({type:types.NEXT_AREA_MEETING_REQUEST_CURRENT_AREA_MEETING_RETURNED,payload:data}));
+
 
   };
 }
 export function saveNewNextAreaMeeting(meeting){
   return function (dispatch) {
     dispatch({type:types.NEXT_AREA_MEETING_SAVE_NEW_NEXT_AREA_MEETING});
-    setTimeout(()=>{
+    api.post('areaMeetings',meeting).then(()=>{
       dispatch({type:types.NEXT_AREA_MEETING_SAVE_NEW_NEXT_AREA_MEETING_RETURNED});
       dispatch(getCurrentNextAreaMeeting());
     });

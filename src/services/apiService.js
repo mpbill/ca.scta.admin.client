@@ -2,6 +2,7 @@
 import axios from 'axios';
 import store from '../store/configureStore';
 let endpoint = "http://localhost:12273/";
+import {PRODUCTION} from '../config';
 import {unauthorizedException} from '../actions/logonFormActions';
 function joinUrls(one, two) {
   if(one && one[one.length-1] === '/') one = one.slice(0, one.length-1);
@@ -15,11 +16,10 @@ function mangleConfig(config) {
   let mangledConfig = { ...config, withCredentials: true,headers:{...config.headers,'Access-Control-Allow-Origin': '*'}};
   return mangledConfig;
 }
-const DEVELOPMENT=true;
 
 function checkForAuthError(error) {
   console.log(error);
-  if(error && error.response && error.response.status === 401 && !DEVELOPMENT) {
+  if(error && error.response && error.response.status === 401 && PRODUCTION) {
     store().dispatch(unauthorizedException());
     return;
   }
