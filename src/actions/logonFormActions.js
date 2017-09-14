@@ -16,7 +16,6 @@ export function updateUsername(username){
 export function login(username,password) {
   return function (dispatch) {
     dispatch({type:types.REQUEST_LOGIN});
-    debugger;
     if(PRODUCTION) {
       api.post('login', {
         password: password

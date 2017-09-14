@@ -17,19 +17,20 @@ function mangleConfig(config) {
   return mangledConfig;
 }
 
-function checkForAuthError(error) {
+function checkForAuthError(response) {
   console.log(error);
-  if(error && error.response && error.response.status === 401 && PRODUCTION) {
+  if(response.status === 401 && PRODUCTION) {
     store().dispatch(unauthorizedException());
-    return;
   }
-  throw error;
+}
+function logErrors(e) {
+  console.error(e);
 }
 
 export default {
-  get: (url, data, config) => axios.get(joinUrls(endpoint, url), mangleConfig(config)).catch(checkForAuthError),
-  post: (url, data, config) => axios.post(joinUrls(endpoint, url), data, mangleConfig(config)).catch(checkForAuthError),
-  put: (url, data, config) => axios.put(joinUrls(endpoint, url), data, mangleConfig(config)).catch(checkForAuthError),
-  delete: (url, data, config) => axios.delete(joinUrls(endpoint, url), mangleConfig(config)).catch(checkForAuthError),
+  get: (url, data, config) => axios.get(joinUrls(endpoint, url), mangleConfig(config)).then(checkForAuthError).catch(logErrors),
+  post: (url, data, config) => axios.post(joinUrls(endpoint, url), data, mangleConfig(config)).then(checkForAuthError).catch(logErrors),
+  put: (url, data, config) => axios.put(joinUrls(endpoint, url), data, mangleConfig(config)).then(checkForAuthError).catch(logErrors),
+  delete: (url, data, config) => axios.delete(joinUrls(endpoint, url), mangleConfig(config)).then(checkForAuthError).catch(logErrors),
   absoluteUrl: (relative) => joinUrls(endpoint, relative)
 };
