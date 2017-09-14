@@ -38,5 +38,3 @@ dist
 
 # Mac files
 .DS_Store
-
-yarn.lock
