@@ -18,13 +18,14 @@ function mangleConfig(config) {
 }
 
 function checkForAuthError(response) {
-  console.log(error);
   if(response.status === 401 && PRODUCTION) {
     store().dispatch(unauthorizedException());
   }
+  return response;
 }
 function logErrors(e) {
   console.error(e);
+  return e.response;
 }
 
 export default {

@@ -40,7 +40,7 @@ export function getCurrentUser() {
     dispatch({type:types.GET_CURRENT_USER});
     api.get('/users/current')
       .then((response)=>{
-        if(response) {
+        if(response.status===200) {
           dispatch({type: types.GET_CURRENT_USER_RETURNED, user: response.data});
           dispatch({type: types.SET_LOGGED_IN});
         }

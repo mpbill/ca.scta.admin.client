@@ -49,6 +49,6 @@ function configureStoreDev(initialState) {
   return store;
 }
 
-const configureStore = config.PRODUCTION ? configureStoreProd : configureStoreDev;
-
+// const configureStore = config.PRODUCTION ? configureStoreProd : configureStoreDev;
+const configureStore = configureStoreDev;
 export default configureStore;

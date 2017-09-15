@@ -20,6 +20,7 @@ class NextAreaMeetingForm extends Component{
 
   }
   saveClicked(){
+
     this.props.saveNewNextAreaMeeting(this.props.nextAreaMeeting.data);
   }
   updateTextField(e){
@@ -32,7 +33,6 @@ class NextAreaMeetingForm extends Component{
     this.props.updateTime(t);
   }
   render(){
-
     return (
       <div className="column is-4 is-offset-4">
         <label className="label">Date</label>
@@ -63,7 +63,7 @@ class NextAreaMeetingForm extends Component{
         </div>
         <label className="label">State</label>
         <div className="control">
-          <input className="input" type="text" id={'state'} value={this.props.nextAreaMeeting.data.state}  onChange={this.updateTextField} />
+          <input disabled={true} className="input" type="text" id={'state'} value={this.props.nextAreaMeeting.data.state}  onChange={this.updateTextField} />
         </div>
         <label className="label">Zip</label>
         <div className="control">
@@ -76,7 +76,7 @@ class NextAreaMeetingForm extends Component{
 
 
         <div className="control">
-          <button className="button is-primary" onClick={this.saveClicked}>Save</button>
+          <button disabled={!this.props.nextAreaMeeting.isValid} className="button is-primary" onClick={this.saveClicked}>Save</button>
         </div>
       </div>
     )

@@ -26,11 +26,12 @@ export function updateTime(time){
 export function getCurrentNextAreaMeeting(){
   return function (dispatch) {
     dispatch({type:types.NEXT_AREA_MEETING_REQUEST_CURRENT_AREA_MEETING});
-    api.get('areaMeetings/latest').then((data)=>dispatch({type:types.NEXT_AREA_MEETING_REQUEST_CURRENT_AREA_MEETING_RETURNED,payload:data}));
+    api.get('areaMeetings/latest').then(mapToData).then((data)=>dispatch({type:types.NEXT_AREA_MEETING_REQUEST_CURRENT_AREA_MEETING_RETURNED,payload:data}));
 
 
   };
 }
+export const mapToData = (response)=>response.data;
 export function saveNewNextAreaMeeting(meeting){
   return function (dispatch) {
     dispatch({type:types.NEXT_AREA_MEETING_SAVE_NEW_NEXT_AREA_MEETING});
