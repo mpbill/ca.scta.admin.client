@@ -1,8 +1,8 @@
-
+import {PRODUCTION} from '../config';
 import axios from 'axios';
 import store from '../store/configureStore';
-let endpoint = "http://casctawebadmin-001-site3.itempurl.com";
-import {PRODUCTION} from '../config';
+let endpoint = PRODUCTION ? "http://casctawebadmin-001-site3.itempurl.com" :  "http://localhost:12273" ;
+console.log(endpoint);
 import {unauthorizedException} from '../actions/logonFormActions';
 function joinUrls(one, two) {
   if(one && one[one.length-1] === '/') one = one.slice(0, one.length-1);

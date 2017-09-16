@@ -76,7 +76,7 @@ class NextAreaMeetingForm extends Component{
 
 
         <div className="control">
-          <button disabled={!this.props.nextAreaMeeting.isValid} className="button is-primary" onClick={this.saveClicked}>Save</button>
+          <button className="button is-primary" onClick={this.saveClicked}>Save</button>
         </div>
       </div>
     )
