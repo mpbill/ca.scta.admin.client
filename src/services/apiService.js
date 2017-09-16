@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 import store from '../store/configureStore';
-let endpoint = "http://localhost:12273/";
+let endpoint = "http://casctawebadmin-001-site3.itempurl.com";
 import {PRODUCTION} from '../config';
 import {unauthorizedException} from '../actions/logonFormActions';
 function joinUrls(one, two) {
