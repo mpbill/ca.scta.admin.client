@@ -1,6 +1,5 @@
 import * as types from '../constants/actionTypes';
 import api from '../services/apiService';
-import {PRODUCTION} from '../config';
 export function updatePassword(password) {
   return {
     type:types.PASSWORD_UPDATE,
@@ -16,18 +15,12 @@ export function updateUsername(username){
 export function login(username,password) {
   return function (dispatch) {
     dispatch({type:types.REQUEST_LOGIN});
-    if(PRODUCTION) {
       api.post('login', {
         password: password
       })
       .then(()=>{
           dispatch({type: types.LOGIN_RETURNED, isLoggedIn: true});
         });
-    }
-    else{
-      dispatch({type: types.LOGIN_RETURNED, isLoggedIn: true});
-      });
-  };
 
   };
 }
