@@ -4,7 +4,7 @@ let getDefaultState=()=>{
       return {
           isLoggedIn: false,
           isLoading:false,
-          username:"",
+          username:"admin",
           password:"",
           currentUser:{}
       };

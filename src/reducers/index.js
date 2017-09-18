@@ -9,6 +9,7 @@ import newMeetingForm from './newMeetingReducer';
 import newMeetingTimeForm from './newMeetingTimeReducer';
 import meetingTypeSelectBox from './meetingTypeSelectBoxReducer';
 import newMeetingGroupReducers from './meetingGroups';
+import nextAreaMeeting from './nextAreaMeetingReducer';
 const rootReducer = combineReducers({
   loginForm,
   currentUser,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   newMeetingTimeForm,
   meetingTypeSelectBox,
   newMeetingGroupReducers,
+  nextAreaMeeting,
   routing: routerReducer,
 });
 

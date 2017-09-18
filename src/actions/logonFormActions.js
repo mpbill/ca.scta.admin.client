@@ -1,5 +1,6 @@
 import * as types from '../constants/actionTypes';
 import api from '../services/apiService';
+import {PRODUCTION} from '../config';
 export function updatePassword(password) {
   return {
     type:types.PASSWORD_UPDATE,
@@ -15,13 +16,19 @@ export function updateUsername(username){
 export function login(username,password) {
   return function (dispatch) {
     dispatch({type:types.REQUEST_LOGIN});
-    api.post('login',{
-      username:username,
-      password:password
-    })
+    if(PRODUCTION) {
+      api.post('login', {
+        password: password
+      })
       .then(()=>{
-        dispatch({type:types.LOGIN_RETURNED,isLoggedIn:true});
+          dispatch({type: types.LOGIN_RETURNED, isLoggedIn: true});
+        });
+    }
+    else{
+      dispatch({type: types.LOGIN_RETURNED, isLoggedIn: true});
       });
+  };
+
   };
 }
 export function unauthorizedException() {
@@ -32,9 +39,9 @@ export function unauthorizedException() {
 export function getCurrentUser() {
   return function (dispatch) {
     dispatch({type:types.GET_CURRENT_USER});
-    api.get('/user')
+    api.get('/users/current')
       .then((response)=>{
-        if(response) {
+        if(response.status===200) {
           dispatch({type: types.GET_CURRENT_USER_RETURNED, user: response.data});
           dispatch({type: types.SET_LOGGED_IN});
         }

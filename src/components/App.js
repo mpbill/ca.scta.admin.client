@@ -8,6 +8,7 @@ import LoginForm from '../containers/AuthContainer';
 import TopNavBar from './TopNavBar';
 import {connect} from 'react-redux';
 
+          <Link to="/next-area-meeting" className="nav-item is-tab" activeClassName="is-active">Next Area Meeting </Link>
 class App extends React.Component {
   constructor(props){
     super(props);

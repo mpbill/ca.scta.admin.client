@@ -9,6 +9,14 @@ import LoginForm from '../components/LoginForm';
 import PropTypes from 'prop-types';
 
 
+    this.passwordKeyPress = this.passwordKeyPress.bind(this);
+  passwordKeyPress(e){
+    if(e.key==="Enter"){
+      this.loginClicked();
+    }
+  }
+          <input disabled={true} className="input" type="text" id={'username'} value={this.props.loginForm.username} onInput={this.usernameChanged} />
+          <input className="input" type="password" value={this.props.loginForm.password} onInput={this.passwordChanged} onKeyPress={this.passwordKeyPress} />
 export const LoginPage=(props)=>{
   return (
     <LoginForm
